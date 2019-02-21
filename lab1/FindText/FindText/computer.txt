@@ -1,0 +1,26 @@
+Generally, any device that can perform numerical calculations, even an adding machine, 
+may be called a computer but nowadays this term is used especially for digital computers. 
+Computers that once weighed 30 tons now may weigh as little as 1.8 kilograms. 
+Microchips and microprocessors have considerably reduced the cost of the electronic components required in a computer. 
+Computers come in many sizes and shapes such as special-purpose, laptop, desktop, minicomputers, supercomputers.
+Special-purpose computers can perform specific tasks and their operations are limited to the programmes built into their microchips. 
+There computers are the basis for electronic calculators and can be found in thousands of electronic products, 
+including digital watches and automobiles. Basically, these computers do the ordinary arithmetic operations such as addition, 
+subtraction, multiplication and division.
+General-purpose computers are much more powerful because they can accept new sets of instructions. 
+The smallest fully functional computers are called laptop computers. 
+Most of the general-purpose computers known as personal or desktop computers can perform almost 5 million operations per second.
+Today's personal computers are know to be used for different purposes: 
+for testing new theories or models that cannot be examined with experiments, 
+as valuable educational tools due to various encyclopedias, dictionaries, educational programmes, in book-keeping, 
+accounting and management. Proper application of computing equipment in different industries is likely to result in proper management, 
+effective distribution of materials and resources, more efficient production and trade.
+Minicomputers are high-speed computers that have greater data manipulating capabilities than personal computers do 
+and that can be used simultaneously by many users. These machines are primarily used by larger businesses or by large research 
+and university centers. The speed and power of supercomputers, the highest class of computers, are almost beyond comprehension, 
+and their capabilities are continually being improved. 
+The most complex of these machines can perform nearly 32 billion calculations per second 
+and store 1 billion characters in memory at one time, and can do in one hour what a desktop computer would take 40 years to do. 
+They are used commonly by government agencies and large research centers. 
+Linking together networks of several small computer centers and programming them to use a common language has enabled engineers 
+to create the supercomputer. The aim of this technology is to elaborate a machine that could perform a trillion calculations per second.
