@@ -191,8 +191,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="incorrect_number_of_parameters.txt" />
-    <Text Include="is_not_binary_number.txt" />
+    <Text Include="invalid_digit.txt" />
     <Text Include="number_1001.txt" />
+    <Text Include="overflow.txt" />
     <Text Include="zero.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

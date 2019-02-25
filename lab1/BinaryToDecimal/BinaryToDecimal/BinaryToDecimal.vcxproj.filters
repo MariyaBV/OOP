@@ -39,13 +39,16 @@
     <Text Include="number_1001.txt">
       <Filter>Файлы заголовков\tests-data</Filter>
     </Text>
-    <Text Include="is_not_binary_number.txt">
-      <Filter>Файлы заголовков\tests-data</Filter>
-    </Text>
     <Text Include="incorrect_number_of_parameters.txt">
       <Filter>Файлы заголовков\tests-data</Filter>
     </Text>
     <Text Include="zero.txt">
+      <Filter>Файлы заголовков\tests-data</Filter>
+    </Text>
+    <Text Include="invalid_digit.txt">
+      <Filter>Файлы заголовков\tests-data</Filter>
+    </Text>
+    <Text Include="overflow.txt">
       <Filter>Файлы заголовков\tests-data</Filter>
     </Text>
   </ItemGroup>
