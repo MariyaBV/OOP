@@ -186,7 +186,6 @@
     <Text Include="incorrect_number_of_parameters.txt" />
     <Text Include="not_open_file.txt" />
     <Text Include="one_line-out.txt" />
-    <Text Include="hello_world.txt" />
     <Text Include="text_not_found.txt" />
     <Text Include="computer.txt" />
   </ItemGroup>

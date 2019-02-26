@@ -37,9 +37,6 @@
     <Text Include="computer.txt">
       <Filter>Файлы заголовков\tests-data</Filter>
     </Text>
-    <Text Include="hello_world.txt">
-      <Filter>Файлы заголовков\tests-data</Filter>
-    </Text>
     <Text Include="computer-out.txt">
       <Filter>Файлы заголовков\tests-data</Filter>
     </Text>

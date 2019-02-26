@@ -42,7 +42,7 @@ fc %OUT% computer-out.txt
 if ERRORLEVEL 1 goto ERR
 
 ::Не находит не существующую строку в файле
-%PROGRAM% computer.txt "computers can specific" > %OUT% || goto err
+%PROGRAM% computer.txt "computers can specific" > %OUT% && goto err
 fc %OUT% text_not_found.txt
 if ERRORLEVEL 1 goto ERR
 
