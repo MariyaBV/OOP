@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков\tests-data">
+      <UniqueIdentifier>{503f2ee7-e257-4111-9a33-e480968b42fe}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="multmatrix.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="test.bat">
+      <Filter>Исходные файлы</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="incorrect_num_of_param.txt">
+      <Filter>Файлы заголовков\tests-data</Filter>
+    </Text>
+    <Text Include="not_open_file.txt">
+      <Filter>Файлы заголовков\tests-data</Filter>
+    </Text>
+    <Text Include="matrix1.txt">
+      <Filter>Файлы заголовков\tests-data</Filter>
+    </Text>
+    <Text Include="matrix2.txt">
+      <Filter>Файлы заголовков\tests-data</Filter>
+    </Text>
+    <Text Include="not_all_columns.txt">
+      <Filter>Файлы заголовков\tests-data</Filter>
+    </Text>
+    <Text Include="not_all_columns-out.txt">
+      <Filter>Файлы заголовков\tests-data</Filter>
+    </Text>
+    <Text Include="not_all_rows.txt">
+      <Filter>Файлы заголовков\tests-data</Filter>
+    </Text>
+    <Text Include="not_all_rows-out.txt">
+      <Filter>Файлы заголовков\tests-data</Filter>
+    </Text>
+    <Text Include="result_matrix.txt">
+      <Filter>Файлы заголовков\tests-data</Filter>
+    </Text>
+    <Text Include="more_3_rows.txt">
+      <Filter>Файлы заголовков\tests-data</Filter>
+    </Text>
+    <Text Include="wrong_num_rows.txt">
+      <Filter>Файлы заголовков\tests-data</Filter>
+    </Text>
+    <Text Include="more_3_columns.txt">
+      <Filter>Файлы заголовков\tests-data</Filter>
+    </Text>
+    <Text Include="wrong_num_columns.txt">
+      <Filter>Файлы заголовков\tests-data</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

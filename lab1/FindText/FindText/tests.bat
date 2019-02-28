@@ -6,7 +6,7 @@ set NOT_FOUND="%text_not_found.txt%"
 
 ::При запуске без параметров ожидается ненулевой код возврата
 %PROGRAM% > nul
-if NOT ERRORLEVEL 1 goto err
+if NOT ERRORLEVEL 1 goto ERR
 
 ::Переданы не все аргументы
 %PROGRAM% "computer are" > %OUT%
@@ -32,17 +32,17 @@ fc %OUT% empty_string.txt
 if ERRORLEVEL 1 goto ERR
 
 ::Находит 1 существующую строку
-%PROGRAM% computer.txt "can be found in thousands" > %OUT% || goto err
+%PROGRAM% computer.txt "can be found in thousands" > %OUT% || goto ERR
 fc %OUT% one_line-out.txt
 if ERRORLEVEL 1 goto ERR
 
 ::Находит несколько существующих строк
-%PROGRAM% computer.txt "computers are" > %OUT% || goto err
+%PROGRAM% computer.txt "computers are" > %OUT% || goto ERR
 fc %OUT% computer-out.txt
 if ERRORLEVEL 1 goto ERR
 
 ::Не находит не существующую строку в файле
-%PROGRAM% computer.txt "computers can specific" > %OUT% && goto err
+%PROGRAM% computer.txt "computers can specific" > %OUT% && goto ERR
 fc %OUT% text_not_found.txt
 if ERRORLEVEL 1 goto ERR
 
@@ -50,6 +50,6 @@ if ERRORLEVEL 1 goto ERR
 echo Program testing succeeded
 exit /B 0
 
-:err
+:ERR
 echo Program testing failed
 exit /B 1
