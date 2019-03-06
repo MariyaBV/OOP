@@ -9,7 +9,6 @@ using namespace std;
 int main()
 {
 	vector<double> inputVector;
-	double min;
 
 	ReadVectorFromStream(cin, inputVector);
 

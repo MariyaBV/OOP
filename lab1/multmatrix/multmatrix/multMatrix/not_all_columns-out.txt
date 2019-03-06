@@ -1,0 +1,2 @@
+In not_all_columns.txt entered invalid matrix 
+Usage: matrix 3x3

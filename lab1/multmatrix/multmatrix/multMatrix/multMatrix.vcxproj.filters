@@ -13,8 +13,8 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Файлы заголовков\tests-data">
-      <UniqueIdentifier>{503f2ee7-e257-4111-9a33-e480968b42fe}</UniqueIdentifier>
+    <Filter Include="Файлы заголовков\test-data">
+      <UniqueIdentifier>{8bfe1763-e21c-41d4-b420-2cf4197a56f3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -26,7 +26,7 @@
     <ClCompile Include="pch.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="multmatrix.cpp">
+    <ClCompile Include="multMatrix.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -36,44 +36,32 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="incorrect_num_of_param.txt">
-      <Filter>Файлы заголовков\tests-data</Filter>
-    </Text>
     <Text Include="not_open_file.txt">
-      <Filter>Файлы заголовков\tests-data</Filter>
-    </Text>
-    <Text Include="matrix1.txt">
-      <Filter>Файлы заголовков\tests-data</Filter>
-    </Text>
-    <Text Include="matrix2.txt">
-      <Filter>Файлы заголовков\tests-data</Filter>
-    </Text>
-    <Text Include="not_all_columns.txt">
-      <Filter>Файлы заголовков\tests-data</Filter>
-    </Text>
-    <Text Include="not_all_columns-out.txt">
-      <Filter>Файлы заголовков\tests-data</Filter>
-    </Text>
-    <Text Include="not_all_rows.txt">
-      <Filter>Файлы заголовков\tests-data</Filter>
+      <Filter>Файлы заголовков\test-data</Filter>
     </Text>
     <Text Include="not_all_rows-out.txt">
-      <Filter>Файлы заголовков\tests-data</Filter>
+      <Filter>Файлы заголовков\test-data</Filter>
+    </Text>
+    <Text Include="not_all_rows.txt">
+      <Filter>Файлы заголовков\test-data</Filter>
+    </Text>
+    <Text Include="not_all_columns-out.txt">
+      <Filter>Файлы заголовков\test-data</Filter>
+    </Text>
+    <Text Include="not_all_columns.txt">
+      <Filter>Файлы заголовков\test-data</Filter>
+    </Text>
+    <Text Include="matrix2.txt">
+      <Filter>Файлы заголовков\test-data</Filter>
+    </Text>
+    <Text Include="matrix1.txt">
+      <Filter>Файлы заголовков\test-data</Filter>
+    </Text>
+    <Text Include="incorrect_num_of_param.txt">
+      <Filter>Файлы заголовков\test-data</Filter>
     </Text>
     <Text Include="result_matrix.txt">
-      <Filter>Файлы заголовков\tests-data</Filter>
-    </Text>
-    <Text Include="more_3_rows.txt">
-      <Filter>Файлы заголовков\tests-data</Filter>
-    </Text>
-    <Text Include="wrong_num_rows.txt">
-      <Filter>Файлы заголовков\tests-data</Filter>
-    </Text>
-    <Text Include="more_3_columns.txt">
-      <Filter>Файлы заголовков\tests-data</Filter>
-    </Text>
-    <Text Include="wrong_num_columns.txt">
-      <Filter>Файлы заголовков\tests-data</Filter>
+      <Filter>Файлы заголовков\test-data</Filter>
     </Text>
   </ItemGroup>
 </Project>

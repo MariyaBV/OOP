@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{B2287031-FE7F-431E-9F88-72ADA444E48B}</ProjectGuid>
+    <ProjectGuid>{6464DA44-3E1D-42F8-9C97-1D0D492ED865}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>multmatrix</RootNamespace>
+    <RootNamespace>multMatrix</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -178,7 +178,7 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="multmatrix.cpp" />
+    <ClCompile Include="multMatrix.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -193,16 +193,12 @@
     <Text Include="incorrect_num_of_param.txt" />
     <Text Include="matrix1.txt" />
     <Text Include="matrix2.txt" />
-    <Text Include="more_3_columns.txt" />
-    <Text Include="more_3_rows.txt" />
     <Text Include="not_all_columns-out.txt" />
     <Text Include="not_all_columns.txt" />
     <Text Include="not_all_rows-out.txt" />
     <Text Include="not_all_rows.txt" />
     <Text Include="not_open_file.txt" />
     <Text Include="result_matrix.txt" />
-    <Text Include="wrong_num_columns.txt" />
-    <Text Include="wrong_num_rows.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

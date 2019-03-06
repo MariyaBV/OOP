@@ -20,14 +20,14 @@ if NOT ERRORLEVEL 1 goto err
 fc %OUT% not_open_file.txt
 if ERRORLEVEL 1 goto err
 
-::Передается не все столбцы
-%PROGRAM% matrix1.txt not_all_columns.txt > %OUT%
-if NOT ERRORLEVEL 1 goto err
+::Передается не все столбцы и не все строки
+%PROGRAM% not_all_columns.txt not_all_rows.txt > %OUT% && goto err
 fc %OUT% not_all_columns-out.txt
 if ERRORLEVEL 1 goto err
 
-::Передается не все строки и не все столбцы
-%PROGRAM% not_all_columns.txt not_all_rows.txt > %OUT% && goto err
+::Передается не все столбцы
+%PROGRAM% matrix1.txt not_all_columns.txt > %OUT%
+if NOT ERRORLEVEL 1 goto err
 fc %OUT% not_all_columns-out.txt
 if ERRORLEVEL 1 goto err
 
@@ -35,18 +35,6 @@ if ERRORLEVEL 1 goto err
 %PROGRAM% matrix1.txt not_all_rows.txt > %OUT%
 if NOT ERRORLEVEL 1 goto err
 fc %OUT% not_all_rows-out.txt
-if ERRORLEVEL 1 goto err
-
-::Передается больше 3 строк
-%PROGRAM% matrix1.txt more_3_rows.txt > %OUT%
-if NOT ERRORLEVEL 1 goto err
-fc %OUT% wrong_num_rows.txt
-if ERRORLEVEL 1 goto err
-
-::Передается больше 3 столбцов
-%PROGRAM% matrix1.txt more_3_columns.txt > %OUT%
-if NOT ERRORLEVEL 1 goto err
-fc %OUT% wrong_num_columns.txt
 if ERRORLEVEL 1 goto err
 
 %PROGRAM% matrix1.txt matrix2.txt > %OUT% || goto err
