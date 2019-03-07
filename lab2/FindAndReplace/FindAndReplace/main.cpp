@@ -1,7 +1,5 @@
 #include "pch.h"
 #include "FindAndReplace.h"
-#include <iostream>
-#include <stdlib.h>
 
 using namespace std;
 
