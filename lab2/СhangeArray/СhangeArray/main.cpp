@@ -1,16 +1,23 @@
 #include "pch.h"
-#include <iostream>
-#include <vector>
 #include "ChangeArray.h"
-#include <algorithm>
+#include <fstream>
 
 using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
 	vector<double> inputVector;
 
-	ReadVectorFromStream(cin, inputVector);
+	if (argc == 2)
+	{
+		ifstream input(argv[1]);
+		ReadVectorFromStream(input, inputVector);
+	}
+	else
+	{
+		ReadVectorFromStream(cin, inputVector);
+	}
+
 
 	if (inputVector.size() == 0)
 	{
