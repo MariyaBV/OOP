@@ -10,9 +10,9 @@ enum class Error
 	Ok,
 };
 
-Error LoadDictionary(char* fileName, map<string, string>& dictionary);
+Error LoadDictionary(const char* fileName, map<string, string>& dictionary);
 void PrintMap(const map<string, string>& myMap);
-void SaveToFile(char* fileName, map<string, string>& dictionary);
-void DialogueWithUser(char* fileName, map<string, string>& dictionary, Error err);
-string FindTranslate(map<string, string>& dictionary, string searchWord);
+void SaveToFile(const char* fileName, map<string, string>& dictionary);
+void DialogueWithUser(const char* fileName, map<string, string>& dictionary, Error err);
+string FindTranslate(map<string, string>& dictionary, string searchWord, Error err);
 void InsertNewWord(map<string, string>& dictionary, string searchWord, string translate);
