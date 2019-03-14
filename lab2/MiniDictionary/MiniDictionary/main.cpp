@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
 	map<string, string> dictionary;
 
 	Error err = LoadDictionary(fileName, dictionary);
-	PrintMap(dictionary);
+	PrintDictionary(dictionary);
 	DialogueWithUser(fileName, dictionary, err);
 
 	return 0;

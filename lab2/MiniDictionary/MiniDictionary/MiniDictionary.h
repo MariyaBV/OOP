@@ -11,8 +11,8 @@ enum class Error
 };
 
 Error LoadDictionary(const char* fileName, map<string, string>& dictionary);
-void PrintMap(const map<string, string>& myMap);
+void PrintDictionary(const map<string, string>& myMap);
 void SaveToFile(const char* fileName, map<string, string>& dictionary);
 void DialogueWithUser(const char* fileName, map<string, string>& dictionary, Error err);
-string FindTranslate(map<string, string>& dictionary, string searchWord, Error err);
+string FindTranslation(map<string, string>& dictionary, string searchWord);
 void InsertNewWord(map<string, string>& dictionary, string searchWord, string translate);
