@@ -1,6 +1,7 @@
 #include "pch.h"
 
 using namespace std;
+using Dictionary = map<string, string>;
 
 enum class Error
 {
@@ -10,9 +11,9 @@ enum class Error
 	Ok,
 };
 
-Error LoadDictionary(const char* fileName, map<string, string>& dictionary);
-void PrintDictionary(const map<string, string>& myMap);
-void SaveToFile(const char* fileName, map<string, string>& dictionary);
-void DialogueWithUser(const char* fileName, map<string, string>& dictionary, Error err);
-string FindTranslation(map<string, string>& dictionary, string searchWord);
-void InsertNewWord(map<string, string>& dictionary, string searchWord, string translate);
+Error LoadDictionary(const char* fileName, Dictionary& dictionary);
+void PrintDictionary(const Dictionary& myMap);
+void SaveToFile(const char* fileName, Dictionary& dictionary);
+void DialogueWithUser(const char* fileName, Dictionary& dictionary, Error err);
+string FindTranslation(Dictionary& dictionary, const string& searchWord);
+void InsertNewWord(Dictionary& dictionary, const string& searchWord, const string& translate);

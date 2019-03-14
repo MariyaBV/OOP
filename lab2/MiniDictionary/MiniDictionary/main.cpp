@@ -1,8 +1,6 @@
 #include "pch.h"
 #include "MiniDictionary.h"
 
-using namespace std;
-
 int main(int argc, char* argv[])
 {
 	SetConsoleCP(1251);
@@ -10,7 +8,7 @@ int main(int argc, char* argv[])
 	setlocale(LC_CTYPE, "rus");
 
 	char* fileName = argv[1];
-	map<string, string> dictionary;
+	Dictionary dictionary;
 
 	Error err = LoadDictionary(fileName, dictionary);
 	PrintDictionary(dictionary);
