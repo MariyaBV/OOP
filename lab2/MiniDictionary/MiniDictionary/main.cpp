@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
 
 	Error err = LoadDictionary(fileName, dictionary);
 	PrintMap(dictionary);
-	DialogueWithUser(fileName, dictionary);
+	DialogueWithUser(fileName, dictionary, err);
 
 	return 0;
 }
