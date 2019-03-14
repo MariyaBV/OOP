@@ -11,7 +11,6 @@ int main(int argc, char* argv[])
 	Dictionary dictionary;
 
 	Error err = LoadDictionary(fileName, dictionary);
-	PrintDictionary(dictionary);
 	DialogueWithUser(fileName, dictionary, err);
 
 	return 0;
