@@ -1,3 +1,4 @@
-cat  | кошка
-dog | собака
-world | мир
+cat   | кошка
+dog  | собака
+word | слово
+world  | мир
