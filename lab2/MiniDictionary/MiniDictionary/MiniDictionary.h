@@ -11,7 +11,7 @@ enum class Error
 	Ok,
 };
 
-Error LoadDictionary(const char* fileName, Dictionary& dictionary);
+void LoadDictionary(const char* fileName, Dictionary& dictionary);
 void SaveToFile(const char* fileName, const Dictionary& dictionary);
 void DialogueWithUser(const char* fileName, Dictionary& dictionary);
 string FindTranslation(const Dictionary& dictionary, const string& searchWord);

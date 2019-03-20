@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
 
 	Dictionary dictionary;
 
-	Error err = LoadDictionary(fileName, dictionary);
+	LoadDictionary(fileName, dictionary);
 	DialogueWithUser(fileName, dictionary);
 
 	return 0;
