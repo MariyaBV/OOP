@@ -12,9 +12,8 @@ enum class Error
 };
 
 Error LoadDictionary(const char* fileName, Dictionary& dictionary);
-void PrintDictionary(const Dictionary& dictionary);
 void SaveToFile(const char* fileName, const Dictionary& dictionary);
-void DialogueWithUser(const char* fileName, Dictionary& dictionary, Error err);
+void DialogueWithUser(const char* fileName, Dictionary& dictionary);
 string FindTranslation(const Dictionary& dictionary, const string& searchWord);
 void InsertNewWord(Dictionary& dictionary, const string& searchWord, const string& translate);
-bool SaveOrNotSaveNewWord(Dictionary dictionary, const string& word, const string& translation);
+void OutOfDialogue(string word, bool newWordAdded, const Dictionary& dictionary, const char* fileName);

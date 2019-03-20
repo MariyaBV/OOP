@@ -1,4 +1,6 @@
 cat | koshka
+computer | komputer
 dog | sobaka
+hello | привет
 word | slovo
 world | mir
