@@ -3,4 +3,4 @@
 using namespace std;
 
 set<int> GeneratePrimeNumbersSet(const unsigned long upperBound);
-void PrintPrimeNumbersSet(const set<int> PrimeNumbersSet);
+void PrintSet(const set<int> PrimeNumbersSet);

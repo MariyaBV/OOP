@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	PrintPrimeNumbersSet(GeneratePrimeNumbersSet(upperBound));
+	PrintSet(GeneratePrimeNumbersSet(upperBound));
 
 	return 0;
 }
