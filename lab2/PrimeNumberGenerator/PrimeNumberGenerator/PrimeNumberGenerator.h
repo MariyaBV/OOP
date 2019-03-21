@@ -2,5 +2,5 @@
 
 using namespace std;
 
-set<int> GeneratePrimeNumbersSet(const unsigned int upperBound);
+set<int> GeneratePrimeNumbersSet(const unsigned long upperBound);
 void PrintPrimeNumbersSet(const set<int> PrimeNumbersSet);

@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "PrimeNumberGenerator.h"
+#include <boost/timer.hpp>
 
 using namespace std;
 const int MAX_UPPER_BOUND = 100000000;
@@ -14,7 +15,7 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	unsigned int upperBound = stoul(argv[1]); //fabs(atoi());
+	unsigned long upperBound = stoul(argv[1]); //fabs(atoi());
 
 	if (upperBound > MAX_UPPER_BOUND)
 	{
@@ -24,6 +25,13 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
+	/*boost::timer time;
+	time.restart();
+
+	GeneratePrimeNumbersSet(upperBound);
+
+	double duration = time.elapsed();
+	cout << duration << endl;*/
 	PrintPrimeNumbersSet(GeneratePrimeNumbersSet(upperBound));
 
 	return 0;
