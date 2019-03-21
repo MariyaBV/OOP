@@ -25,13 +25,6 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	/*boost::timer time;
-	time.restart();
-
-	GeneratePrimeNumbersSet(upperBound);
-
-	double duration = time.elapsed();
-	cout << duration << endl;*/
 	PrintPrimeNumbersSet(GeneratePrimeNumbersSet(upperBound));
 
 	return 0;
