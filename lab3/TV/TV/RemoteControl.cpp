@@ -8,11 +8,12 @@ CRemoteControl::CRemoteControl(CTVSet& tv, istream& input, ostream& output)
 	: m_tv(tv)
 	, m_input(input)
 	, m_output(output)
-	, m_actionMap({ { "TurnOn", bind(&CRemoteControl::TurnOn, this, placeholders::_1) },
+	, m_actionMap({
+		  { "TurnOn", bind(&CRemoteControl::TurnOn, this, placeholders::_1) },
 		  { "TurnOff", bind(&CRemoteControl::TurnOff, this, placeholders::_1) },
 		  { "Info", bind(&CRemoteControl::Info, this, placeholders::_1) },
 		  { "SelectChannel", bind(&CRemoteControl::SelectChannel, this, placeholders::_1) },
-	})
+	  })
 {
 }
 
@@ -75,6 +76,22 @@ bool CRemoteControl::SelectChannel(istream& args)
 	int channel = atoi(inputString.c_str());
 
 	m_tv.SelectChannel(channel);
-	m_output << "TV channel changed to " << channel << endl;
+	string info;
+
+	if ((m_tv.IsTurnedOn()) && (m_tv.SelectChannel(channel)))
+	{
+		info = "TV channel changed to " + to_string(channel);
+	}
+	else if ((m_tv.IsTurnedOn()) && (!m_tv.SelectChannel(channel)))
+	{
+		info = "Error, wrong channel.\nUsage: channel >= 1 && channel <= 99";
+	}
+	else if (!m_tv.IsTurnedOn())
+	{
+		info = "TV is turned off";
+	}
+
+	m_output << info << endl;
+
 	return true;
 }
