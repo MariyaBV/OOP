@@ -18,7 +18,10 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CTVSe.h">
+    <ClInclude Include="RemoteControl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CTVSet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -29,7 +32,10 @@
     <ClCompile Include="TV.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CTVSe.cpp">
+    <ClCompile Include="RemoteControl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CTVSet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

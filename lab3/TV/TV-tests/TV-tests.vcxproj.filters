@@ -18,7 +18,7 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\TV\CTVSe.h">
+    <ClInclude Include="..\TV\CTVSet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -32,7 +32,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\TV\CTVSe.cpp">
+    <ClCompile Include="..\TV\CTVSet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
