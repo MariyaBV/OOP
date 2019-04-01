@@ -11,7 +11,7 @@ CRemoteControl::CRemoteControl(CTVSet& tv, istream& input, ostream& output)
 	, m_actionMap({ { "TurnOn", bind(&CRemoteControl::TurnOn, this, placeholders::_1) },
 		  { "TurnOff", bind(&CRemoteControl::TurnOff, this, placeholders::_1) },
 		  { "Info", bind(&CRemoteControl::Info, this, placeholders::_1) },
-		  //{ "SelectChannel", bind(&CRemoteControl::SelectChannel, this, placeholders::_1) },
+		  { "SelectChannel", bind(&CRemoteControl::SelectChannel, this, placeholders::_1) },
 	})
 {
 }
@@ -59,9 +59,22 @@ bool CRemoteControl::Info(istream& args)
 	return true;
 }
 
-bool CRemoteControl::SelectChannel(istream& args, int channel)
+bool CRemoteControl::SelectChannel(istream& args)
 {
+	string inputString;
+	args >> inputString;
+	string SelectChannel = "SelectChannel";
+	string::size_type pos = inputString.find(SelectChannel);
+
+	while (pos != string::npos)
+	{
+		inputString.erase(pos, SelectChannel.size());
+		pos = inputString.find(SelectChannel, pos + 1);
+	}
+	inputString = regex_replace(inputString, regex("^ +| +$|( ) +"), "$1");
+	int channel = atoi(inputString.c_str());
+
 	m_tv.SelectChannel(channel);
-	m_output << "TV channel changed to" << channel << endl;
+	m_output << "TV channel changed to " << channel << endl;
 	return true;
 }
