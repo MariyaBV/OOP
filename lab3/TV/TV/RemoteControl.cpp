@@ -13,6 +13,7 @@ CRemoteControl::CRemoteControl(CTVSet& tv, istream& input, ostream& output)
 		  { "TurnOff", bind(&CRemoteControl::TurnOff, this, placeholders::_1) },
 		  { "Info", bind(&CRemoteControl::Info, this, placeholders::_1) },
 		  { "SelectChannel", bind(&CRemoteControl::SelectChannel, this, placeholders::_1) },
+		  { "SelectPreviousChannel", bind(&CRemoteControl::SelectPreviousChannel, this, placeholders::_1) }
 	  })
 {
 }
@@ -75,14 +76,14 @@ bool CRemoteControl::SelectChannel(istream& args)
 	inputString = regex_replace(inputString, regex("^ +| +$|( ) +"), "$1");
 	int channel = atoi(inputString.c_str());
 
-	m_tv.SelectChannel(channel);
+	bool selectedChannel = m_tv.SelectChannel(channel);
 	string info;
 
-	if ((m_tv.IsTurnedOn()) && (m_tv.SelectChannel(channel)))
+	if ((m_tv.IsTurnedOn()) && (selectedChannel))
 	{
 		info = "TV channel changed to " + to_string(channel);
 	}
-	else if ((m_tv.IsTurnedOn()) && (!m_tv.SelectChannel(channel)))
+	else if ((m_tv.IsTurnedOn()) && (!selectedChannel))
 	{
 		info = "Error, wrong channel.\nUsage: channel >= 1 && channel <= 99";
 	}
@@ -92,6 +93,19 @@ bool CRemoteControl::SelectChannel(istream& args)
 	}
 
 	m_output << info << endl;
+
+	return true;
+}
+
+bool CRemoteControl::SelectPreviousChannel(istream& args)
+{
+	m_tv.SelectPreviousChannel();
+
+	string info = (m_tv.IsTurnedOn())
+		? ("TV channel changed to " + to_string(m_tv.GetChannelNumber()) + "\n")
+		: "TV is turned off\n";
+
+	m_output << info;
 
 	return true;
 }

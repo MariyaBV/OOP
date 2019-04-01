@@ -23,6 +23,7 @@ private:
 	bool TurnOff(istream& args);
 	bool Info(istream& args);
 	bool SelectChannel(istream& args);
+	bool SelectPreviousChannel(istream& args);
 
 private:
 	using HandleUserCommand = function<bool(istream& args)>;
