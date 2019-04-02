@@ -151,11 +151,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AdditionalFunction.h" />
     <ClInclude Include="CTVSet.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="RemoteControl.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AdditionalFunction.cpp" />
     <ClCompile Include="CTVSet.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

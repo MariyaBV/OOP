@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "RemoteControl.h"
 #include "CTVSet.h"
+#include "AdditionalFunction.h"
 
 using namespace std;
 
@@ -13,7 +14,8 @@ CRemoteControl::CRemoteControl(CTVSet& tv, istream& input, ostream& output)
 		  { "TurnOff", bind(&CRemoteControl::TurnOff, this, placeholders::_1) },
 		  { "Info", bind(&CRemoteControl::Info, this, placeholders::_1) },
 		  { "SelectChannel", bind(&CRemoteControl::SelectChannel, this, placeholders::_1) },
-		  { "SelectPreviousChannel", bind(&CRemoteControl::SelectPreviousChannel, this, placeholders::_1) }
+		  { "SelectPreviousChannel", bind(&CRemoteControl::SelectPreviousChannel, this, placeholders::_1) },
+		  { "SetChannelName", bind(&CRemoteControl::SetChannelName, this, placeholders::_1) },
 	  })
 {
 }
@@ -65,17 +67,7 @@ bool CRemoteControl::SelectChannel(istream& args)
 {
 	string inputString;
 	args >> inputString;
-	string SelectChannel = "SelectChannel";
-	string::size_type pos = inputString.find(SelectChannel);
-
-	while (pos != string::npos)
-	{
-		inputString.erase(pos, SelectChannel.size());
-		pos = inputString.find(SelectChannel, pos + 1);
-	}
-	inputString = regex_replace(inputString, regex("^ +| +$|( ) +"), "$1");
 	int channel = atoi(inputString.c_str());
-
 	bool selectedChannel = m_tv.SelectChannel(channel);
 	string info;
 
@@ -83,13 +75,9 @@ bool CRemoteControl::SelectChannel(istream& args)
 	{
 		info = "TV channel changed to " + to_string(channel);
 	}
-	else if ((m_tv.IsTurnedOn()) && (!selectedChannel))
+	else
 	{
-		info = "Error, wrong channel.\nUsage: channel >= 1 && channel <= 99";
-	}
-	else if (!m_tv.IsTurnedOn())
-	{
-		info = "TV is turned off";
+		info = ErrorInfo(m_tv, selectedChannel);
 	}
 
 	m_output << info << endl;
@@ -106,6 +94,30 @@ bool CRemoteControl::SelectPreviousChannel(istream& args)
 		: "TV is turned off\n";
 
 	m_output << info;
+
+	return true;
+}
+
+bool CRemoteControl::SetChannelName(istream& args)
+{
+	string inputString;
+	getline(args, inputString);
+	pair<int, string> channelNumberAndName = ParsingNumberAndString(inputString);
+	int channel = channelNumberAndName.first;
+	string channelName = channelNumberAndName.second;
+	bool setChannelName = m_tv.SetChannelName(channel, channelName);
+	string info;
+
+	if ((m_tv.IsTurnedOn()) && (setChannelName))
+	{
+		info = "TV channel " + to_string(channel) + " saved name: " + channelName;
+	}
+	else
+	{
+		info = ErrorInfo(m_tv, setChannelName);
+	}
+
+	m_output << info << endl;
 
 	return true;
 }

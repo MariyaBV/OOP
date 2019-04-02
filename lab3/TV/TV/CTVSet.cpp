@@ -54,3 +54,15 @@ bool CTVSet::SelectPreviousChannel()
 
 	return false;
 }
+
+bool CTVSet::SetChannelName(int channel, std::string channelName)
+{
+	if ((channel >= 1) && (channel <= 99) && m_isOn)
+	{
+		m_channelNames[channel - 1] = channelName;
+
+		return true;
+	}
+
+	return false;
+}
