@@ -25,6 +25,9 @@ private:
 	bool SelectChannel(istream& args);
 	bool SelectPreviousChannel(istream& args);
 	bool SetChannelName(istream& args);
+	bool DeleteChannelName(istream& args);
+	bool GetChannelName(istream& args);
+	bool GetChannelByName(istream& args);
 
 private:
 	using HandleUserCommand = function<bool(istream& args)>;
