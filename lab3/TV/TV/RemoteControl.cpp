@@ -204,7 +204,7 @@ bool CRemoteControl::GetChannelByName(istream& args)
 	string inputString;
 	getline(args, inputString);
 	string channelName = regex_replace(inputString, regex("^ +| +$|( ) +"), "$1");
-	int channel = m_tv.GetChannelByName(channelName);
+	size_t channel = m_tv.GetChannelByName(channelName);
 	string info;
 
 	if ((m_tv.IsTurnedOn()) && (channel != 0))

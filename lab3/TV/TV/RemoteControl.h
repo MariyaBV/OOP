@@ -1,12 +1,5 @@
 #pragma once
 #include <boost/noncopyable.hpp>
-#include <string>
-#include <algorithm>
-#include <vector>
-#include <iterator>
-#include <regex>
-#include <type_traits>
-
 
 using namespace std;
 class CTVSet;

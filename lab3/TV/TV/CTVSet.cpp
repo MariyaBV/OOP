@@ -26,7 +26,7 @@ bool CTVSet::IsTurnedOn() const
 	return m_isOn;
 }
 
-int CTVSet::GetChannelNumber() const
+size_t CTVSet::GetChannelNumber() const
 {
 	return m_isOn ? m_selectedChannel : 0;
 }
@@ -44,7 +44,7 @@ bool CTVSet::SelectChannel(int channel)
 	return false;
 }
 
-bool CTVSet::SelectChannel(std::string channelName)
+bool CTVSet::SelectChannel(std::string& channelName)
 {
 	if (m_isOn)
 	{
@@ -75,7 +75,7 @@ bool CTVSet::SelectPreviousChannel()
 	return false;
 }
 
-bool CTVSet::SetChannelName(int channel, std::string channelName)
+bool CTVSet::SetChannelName(int channel, std::string& channelName)
 {
 	if ((channel >= 1) && (channel <= 99) && m_isOn)
 	{
@@ -92,7 +92,7 @@ std::vector<std::string> CTVSet::GetAllChannels() const
 	return m_channelNames;
 }
 
-bool CTVSet::DeleteChannelName(std::string channelName)
+bool CTVSet::DeleteChannelName(std::string& channelName)
 {
 	for (auto& value : m_channelNames)
 	{
@@ -107,7 +107,7 @@ bool CTVSet::DeleteChannelName(std::string channelName)
 	return false;
 }
 
-std::string CTVSet::GetChannelName(int channel)
+std::string CTVSet::GetChannelName(int channel) const
 {
 	if ((channel >= 1) && (channel <= 99) && m_isOn)
 	{
@@ -117,7 +117,7 @@ std::string CTVSet::GetChannelName(int channel)
 	return "";
 }
 
-int CTVSet::GetChannelByName(std::string channelName)
+size_t CTVSet::GetChannelByName(std::string& channelName) const
 {
 	if (!channelName.empty())
 	{
@@ -129,6 +129,6 @@ int CTVSet::GetChannelByName(std::string channelName)
 			}
 		}
 	}
-	
+
 	return 0;
 }

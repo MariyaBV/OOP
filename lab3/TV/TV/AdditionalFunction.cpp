@@ -1,7 +1,7 @@
 #pragma once
 #include "pch.h"
-#include "CTVSet.h" 
 #include "AdditionalFunction.h"
+#include "CTVSet.h"
 
 using namespace std;
 
@@ -24,14 +24,12 @@ string ErrorInfo(CTVSet& m_tv, bool setChannelName)
 pair<int, string> ParsingNumberAndString(string inputString)
 {
 	int channel = atoi(inputString.c_str());
-	int len = to_string(channel).length();
-
+	size_t channelLength = to_string(channel).length();
+	inputString = regex_replace(inputString, regex("^ +| +$|( ) +"), "$1");
 	string::size_type pos = inputString.find(to_string(channel));
-
-	while (pos != string::npos)
+	if (pos != string::npos)
 	{
-		inputString.erase(pos, len);
-		pos = inputString.find(to_string(channel), pos + 1);
+		inputString.erase(pos, channelLength);
 	}
 
 	string channelName = regex_replace(inputString, regex("^ +| +$|( ) +"), "$1");

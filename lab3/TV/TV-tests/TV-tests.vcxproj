@@ -165,11 +165,14 @@
   <ItemGroup>
     <ClInclude Include="..\TV\AdditionalFunction.h" />
     <ClInclude Include="..\TV\CTVSet.h" />
+    <ClInclude Include="..\TV\RemoteControl.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\TV\AdditionalFunction.cpp" />
     <ClCompile Include="..\TV\CTVSet.cpp" />
+    <ClCompile Include="..\TV\RemoteControl.cpp" />
+    <ClCompile Include="CRemoteControlTests.cpp" />
     <ClCompile Include="main.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
