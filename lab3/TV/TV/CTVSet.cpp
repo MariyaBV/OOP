@@ -95,13 +95,16 @@ std::vector<std::string> CTVSet::GetAllChannels() const
 
 bool CTVSet::DeleteChannelName(std::string& channelName)
 {
-	for (auto& value : m_channelNames)
+	if (!channelName.empty())
 	{
-		if (value == channelName)
+		for (auto& value : m_channelNames)
 		{
-			value.clear();
+			if (value == channelName)
+			{
+				value.clear();
 
-			return true;
+				return true;
+			}
 		}
 	}
 

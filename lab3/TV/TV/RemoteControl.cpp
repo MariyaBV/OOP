@@ -79,12 +79,14 @@ bool CRemoteControl::SelectChannel(istream& args)
 {
 	string inputString;
 	getline(args, inputString);
-	int channel = atoi(inputString.c_str());
-	string channelName = regex_replace(inputString, regex("^ +| +$|( ) +"), "$1");
+	pair<int, string> parseData = ParsingNumberAndString(inputString);
+	channel = parseData.first;
+	string channelName = parseData.second;
 	bool selectedChannel;
 
 	if (!channelName.empty())
 	{
+		channelName = regex_replace(inputString, regex("^ +| +$|( ) +"), "$1");
 		selectedChannel = m_tv.SelectChannel(channelName);
 	}
 	else
@@ -94,13 +96,25 @@ bool CRemoteControl::SelectChannel(istream& args)
 
 	string info;
 
-	if ((m_tv.IsTurnedOn()) && (selectedChannel))
+	if ((m_tv.IsTurnedOn()) && (selectedChannel) && (channelName.empty()))
 	{
 		info = "TV channel changed to " + to_string(channel);
 	}
-	else
+	else if ((m_tv.IsTurnedOn()) && (selectedChannel) && (!channelName.empty()))
 	{
-		info = ErrorInfo(m_tv, selectedChannel);
+		info = "TV channel changed to " + channelName;
+	}
+	else if ((m_tv.IsTurnedOn()) && (!selectedChannel) && (channelName.empty()))
+	{
+		info = "Error, wrong channel.\nUsage: channel >= 1 && channel <= 99";
+	}
+	else if ((m_tv.IsTurnedOn()) && (!selectedChannel) && (!channelName.empty()))
+	{
+		info = "Not found channel name: " + channelName;
+	}
+	else if (!m_tv.IsTurnedOn())
+	{
+		info = "TV is turned off";
 	}
 
 	m_output << info << endl;
@@ -156,11 +170,15 @@ bool CRemoteControl::DeleteChannelName(istream& args)
 
 	if ((m_tv.IsTurnedOn()) && (deletedChannelName))
 	{
-		info = "Delete Name: " + channelName + " from TV channel: " + to_string(channel);
+		info = "Delete TV channel Name: " + channelName;
 	}
-	else
+	else if ((m_tv.IsTurnedOn()) && (!deletedChannelName))
 	{
-		info = ErrorInfo(m_tv, deletedChannelName);
+		info = "TV channel: " + channelName + " not found";
+	}
+	else if (!(m_tv.IsTurnedOn()))
+	{
+		info = "TV is turned off";
 	}
 
 	m_output << info << endl;
