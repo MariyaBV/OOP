@@ -79,6 +79,7 @@ bool CTVSet::SetChannelName(int channel, std::string& channelName)
 {
 	if ((channel >= 1) && (channel <= 99) && m_isOn)
 	{
+		DeleteChannelName(channelName);
 		m_channelNames[channel - 1] = channelName;
 
 		return true;
