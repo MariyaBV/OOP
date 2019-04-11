@@ -5,13 +5,12 @@
 class CTriangle final : public CSolidShape
 {
 public:
-	CTriangle();
+	CTriangle(CPoint& vertex1, CPoint& vertex2, CPoint& vertex3, std::string& outlineColor, std::string& fillColor);
 	~CTriangle();
 
 	double GetArea() const override;
 	double GetPerimeter() const override;
 
-	std::string ToString();
 	uint32_t GetOutlineColor() const;
 	uint32_t GetFillColor() const;
 

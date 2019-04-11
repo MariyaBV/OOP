@@ -1,7 +1,12 @@
 #include "pch.h"
 #include "CTriangle.h"
+#include "CSolidShape.h"
 
-CTriangle::CTriangle()
+CTriangle::CTriangle(CPoint& vertex1, CPoint& vertex2, CPoint& vertex3, std::string& outlineColor, std::string& fillColor)
+	: m_vertex1(vertex1)
+	, m_vertex2(vertex2)
+	, m_vertex3(vertex3)
+	, CSolidShape("Triangle", outlineColor, fillColor)
 {
 }
 
@@ -11,32 +16,22 @@ CTriangle::~CTriangle()
 
 double CTriangle::GetArea() const
 {
-	// TODO: Add your implementation code here.
 	return 0.0;
 }
 
 double CTriangle::GetPerimeter() const
 {
-	// TODO: Add your implementation code here.
 	return 0.0;
-}
-
-std::string CTriangle::ToString()
-{
-	// TODO: Add your implementation code here.
-	return std::string();
 }
 
 uint32_t CTriangle::GetOutlineColor() const
 {
-	// TODO: Add your implementation code here.
-	return uint32_t();
+	return CSolidShape::GetOutlineColor();
 }
 
 uint32_t CTriangle::GetFillColor() const
 {
-	// TODO: Add your implementation code here.
-	return uint32_t();
+	return CSolidShape::GetFillColor();
 }
 
 CPoint CTriangle::GetVertex1() const

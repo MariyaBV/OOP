@@ -1,8 +1,13 @@
 #include "pch.h"
 #include "CLineSegment.h"
+#include "CShape.h"
 
-CLineSegment::CLineSegment()
+CLineSegment::CLineSegment(CPoint& startPont, CPoint& endPoint, std::string& outlineColor)
+	: m_startPoint(startPont)
+	, m_endPoint(endPoint)
+	, CShape("LineSegment", outlineColor)
 {
+	//CShape::SetOutlineColor(outlineColor);
 }
 
 CLineSegment::~CLineSegment()
@@ -11,36 +16,33 @@ CLineSegment::~CLineSegment()
 
 double CLineSegment::GetArea() const
 {
-	// TODO: Add your implementation code here.
 	return 0.0;
 }
 
 double CLineSegment::GetPerimeter() const
 {
-	// TODO: Add your implementation code here.
 	return 0.0;
-}
-
-std::string CLineSegment::ToString()
-{
-	// TODO: Add your implementation code here.
-	return std::string();
 }
 
 uint32_t CLineSegment::GetOutlineColor() const
 {
-	// TODO: Add your implementation code here.
-	return uint32_t();
+	return CShape::GetOutlineColor();
 }
 
 CPoint CLineSegment::GetStartPoint() const
 {
-	// TODO: Add your implementation code here.
-	return CPoint();
+	return m_startPoint;
 }
 
 CPoint CLineSegment::GetEndPoint() const
 {
-	// TODO: Add your implementation code here.
-	return CPoint();
+	return m_endPoint;
 }
+
+void CLineSegment::AppendProperties(std::ostream& strm) const
+{
+	strm << setprecision(3) <<
+		"\tstart point (" << m_startPoint.x << ", " << m_startPoint.y << ")" << endl
+		 << "\tend point (" << m_endPoint.x << ", " << m_endPoint.y << ")" << endl;
+}
+

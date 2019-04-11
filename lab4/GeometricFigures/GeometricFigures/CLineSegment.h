@@ -2,17 +2,21 @@
 #include "CShape.h"
 #include "CPoint.h"
 
-class CLineSegment : public CShape
+class CLineSegment final : public CShape
 {
 public:
-	CLineSegment();
+	CLineSegment(CPoint& startPont, CPoint& endPoint, std::string & outlineColor);
 	~CLineSegment();
 
 	double GetArea() const override;
 	double GetPerimeter() const override;
-	std::string ToString() override;
 	uint32_t GetOutlineColor() const override;
 
 	CPoint GetStartPoint() const;
 	CPoint GetEndPoint() const;
+
+private:
+	CPoint m_startPoint;
+	CPoint m_endPoint;
+	void AppendProperties(std::ostream& strm) const;
 };
