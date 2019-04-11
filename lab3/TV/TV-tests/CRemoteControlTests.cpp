@@ -28,6 +28,21 @@ SCENARIO("Remote control can turn on a TV", "[remote]")
 				}
 			}
 		}
+		AND_WHEN("user enters TurnOff command")
+		{
+			tv.TurnOn();
+			REQUIRE(tv.IsTurnedOn());
+			input << "TurnOff";
+			CHECK(rc.HandleCommand());
+			THEN("tv turn off")
+			{
+				CHECK(!tv.IsTurnedOn());
+				AND_THEN("user gets notification")
+				{
+					CHECK(output.str() == "TV is turned off\n");
+				}
+			}
+		}
 	}
 }
 
@@ -105,7 +120,7 @@ SCENARIO("Remote control for select TV channel", "[remote]")
 	CTVSet tv;
 	std::stringstream input;
 	std::ostringstream output;
-	
+
 	GIVEN("A turned off TV")
 	{
 		REQUIRE(!tv.IsTurnedOn());
