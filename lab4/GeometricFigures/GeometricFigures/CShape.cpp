@@ -36,8 +36,7 @@ uint32_t CShape::GetOutlineColor() const
 string CShape::ToString() const
 {
 	ostringstream strm;
-	strm << m_type << ":" << endl
-		 << setprecision(3)
+	strm << m_type << ":" << endl << fixed << setprecision(2)
 		 << "\tarea = " << GetArea() << endl
 		 << "\tperimeter = " << GetPerimeter() << endl
 		 << "\toutline color = " << setfill('0') << setw(6) << hex << GetOutlineColor() << endl;

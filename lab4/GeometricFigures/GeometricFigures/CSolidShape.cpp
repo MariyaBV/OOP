@@ -36,5 +36,5 @@ uint32_t CSolidShape::GetOutlineColor() const
 
 void CSolidShape::AppendProperties(ostream& strm) const
 {
-	strm << "\tfill color = " << setfill('0') << setw(8) << hex << GetOutlineColor() << endl;
+	strm << "\tfill color = " << setfill('0') << setw(6) << hex << GetOutlineColor() << endl;
 }
