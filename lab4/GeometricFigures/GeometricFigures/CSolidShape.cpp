@@ -29,12 +29,7 @@ uint32_t CSolidShape::GetOutlineColor() const
 	return CShape::GetOutlineColor();
 }
 
-//bool CSolidShape::SetOutlineColor(string& outlineColor)
-//{
-//	return CShape::SetOutlineColor(outlineColor);
-//}
-
-void CSolidShape::AppendProperties(ostream& strm) const
+void CSolidShape::AppendProperties1(ostream& strm) const
 {
-	strm << "\tfill color = " << setfill('0') << setw(6) << hex << GetOutlineColor() << endl;
+	strm << "\tfill color = " << setfill('0') << setw(6) << hex << CSolidShape::GetFillColor() << endl;
 }

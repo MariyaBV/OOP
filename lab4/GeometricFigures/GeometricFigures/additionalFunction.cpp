@@ -9,3 +9,10 @@ uint32_t FromStringToUINT32(std::string& outlineColor)
 
 	return color;
 }
+
+bool isEqual(double const first, double const second)
+{
+	static double eps = 1e-5;
+
+	return fabs(first - second) < eps;
+}

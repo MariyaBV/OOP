@@ -7,7 +7,6 @@ CLineSegment::CLineSegment(CPoint& startPont, CPoint& endPoint, std::string& out
 	, m_endPoint(endPoint)
 	, CShape("LineSegment", outlineColor)
 {
-	//CShape::SetOutlineColor(outlineColor);
 }
 
 CLineSegment::~CLineSegment()
@@ -39,10 +38,14 @@ CPoint CLineSegment::GetEndPoint() const
 	return m_endPoint;
 }
 
-void CLineSegment::AppendProperties(std::ostream& strm) const
+void CLineSegment::AppendProperties1(std::ostream& strm) const
 {
 	strm << fixed << setprecision(2) <<
 		"\tstart point(" << m_startPoint.x << ", " << m_startPoint.y << ")" << endl
 		 << "\tend point(" << m_endPoint.x << ", " << m_endPoint.y << ")" << endl;
+}
+
+void CLineSegment::AppendProperties2(std::ostream& strm) const
+{
 }
 

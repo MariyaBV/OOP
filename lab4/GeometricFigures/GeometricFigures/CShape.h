@@ -12,10 +12,10 @@ public:
 
 	uint32_t GetOutlineColor() const override;
 	string ToString() const;
-	//bool SetOutlineColor(string& outlineColor) override;
 
 private:
 	uint32_t m_outlineColor;
-	virtual void AppendProperties(ostream& strm) const = 0;
+	virtual void AppendProperties1(ostream& strm) const = 0;
+	virtual void AppendProperties2(ostream& strm) const = 0;
 	string m_type;
 };

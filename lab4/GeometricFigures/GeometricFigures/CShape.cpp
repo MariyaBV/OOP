@@ -9,7 +9,6 @@ CShape::CShape(const string& type, string& outlineColor)
 	: m_type(type)
 	, m_outlineColor(FromStringToUINT32(outlineColor))
 {
-	//m_outlineColor = FromStringToUINT32(outlineColor);
 }
 
 CShape::~CShape()
@@ -21,18 +20,6 @@ uint32_t CShape::GetOutlineColor() const
 	return m_outlineColor;
 }
 
-//bool CShape::SetOutlineColor(string& outlineColor)
-//{
-//	if (!outlineColor.empty())
-//	{
-//		m_outlineColor = FromStringToUINT32(outlineColor);
-//
-//		return true;
-//	}
-//
-//	return false;
-//}
-
 string CShape::ToString() const
 {
 	ostringstream strm;
@@ -40,6 +27,7 @@ string CShape::ToString() const
 		 << "\tarea = " << GetArea() << endl
 		 << "\tperimeter = " << GetPerimeter() << endl
 		 << "\toutline color = " << setfill('0') << setw(6) << hex << GetOutlineColor() << endl;
-	AppendProperties(strm);
+	AppendProperties1(strm);
+	AppendProperties2(strm);
 	return strm.str();
 }
