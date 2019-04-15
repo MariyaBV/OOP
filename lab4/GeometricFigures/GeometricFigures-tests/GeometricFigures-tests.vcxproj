@@ -168,6 +168,7 @@
     <ClInclude Include="..\GeometricFigures\CPoint.h" />
     <ClInclude Include="..\GeometricFigures\CShape.h" />
     <ClInclude Include="..\GeometricFigures\CSolidShape.h" />
+    <ClInclude Include="..\GeometricFigures\CTriangle.h" />
     <ClInclude Include="..\GeometricFigures\IShape.h" />
     <ClInclude Include="..\GeometricFigures\ISolidShape.h" />
     <ClInclude Include="pch.h" />
@@ -177,6 +178,7 @@
     <ClCompile Include="..\GeometricFigures\CLineSegment.cpp" />
     <ClCompile Include="..\GeometricFigures\CShape.cpp" />
     <ClCompile Include="..\GeometricFigures\CSolidShape.cpp" />
+    <ClCompile Include="..\GeometricFigures\CTriangle.cpp" />
     <ClCompile Include="AdditionalFunction-tests.cpp" />
     <ClCompile Include="LineSegmentTests.cpp" />
     <ClCompile Include="main.cpp">
@@ -191,6 +193,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TriangleTests.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
