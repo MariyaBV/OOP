@@ -16,12 +16,16 @@ CTriangle::~CTriangle()
 
 double CTriangle::GetArea() const
 {
-	return 0.0;
+	return 0.5 * fabs((m_vertex2.x - m_vertex1.x) * (m_vertex3.y - m_vertex1.y) - (m_vertex3.x - m_vertex1.x) * (m_vertex2.y - m_vertex1.y));
 }
 
 double CTriangle::GetPerimeter() const
 {
-	return 0.0;
+	double triangleSide1 = sqrt(pow((m_vertex1.x - m_vertex2.x), 2) + pow((m_vertex1.y - m_vertex2.y), 2));
+	double triangleSide2 = sqrt(pow((m_vertex1.x - m_vertex3.x), 2) + pow((m_vertex1.y - m_vertex3.y), 2));
+	double triangleSide3 = sqrt(pow((m_vertex2.x - m_vertex3.x), 2) + pow((m_vertex2.y - m_vertex3.y), 2));
+
+	return (triangleSide1 + triangleSide2 + triangleSide3);
 }
 
 uint32_t CTriangle::GetOutlineColor() const
@@ -47,4 +51,12 @@ CPoint CTriangle::GetVertex2() const
 CPoint CTriangle::GetVertex3() const
 {
 	return m_vertex3;
+}
+
+void CTriangle::AppendProperties2(std::ostream& strm) const
+{
+	strm << fixed << setprecision(2) 
+		<< "\tvertex1(" << m_vertex1.x << ", " << m_vertex1.y << ")" << endl
+		<< "\tvertex2(" << m_vertex2.x << ", " << m_vertex2.y << ")" << endl
+		<< "\tvertex3(" << m_vertex3.x << ", " << m_vertex3.y << ")" << endl;
 }
