@@ -5,7 +5,7 @@
 
 #include <sstream>
 
-SCENARIO("Remote control can turn on a TV", "[remote]")
+SCENARIO("Remote control can turn on and turn off a TV", "[remote]")
 {
 	GIVEN("A remote control connected to the TV which is turned off")
 	{
@@ -150,7 +150,7 @@ SCENARIO("Remote control for select TV channel", "[remote]")
 	{
 		tv.TurnOn();
 		REQUIRE(tv.IsTurnedOn());
-		WHEN("user enter SelectChannel 99 command")
+		WHEN("user enter SelectChannel with existing channel")
 		{
 			input << "SelectChannel 99";
 			CRemoteControl rc(tv, input, output);
@@ -160,17 +160,7 @@ SCENARIO("Remote control for select TV channel", "[remote]")
 				CHECK(output.str() == "TV channel changed to 99\n");
 			}
 		}
-		AND_WHEN("user enter SelectChannel 1 command")
-		{
-			input << "SelectChannel 1";
-			CRemoteControl rc(tv, input, output);
-			rc.HandleCommand();
-			THEN("it is notified that TV is on the current channel")
-			{
-				CHECK(output.str() == "TV channel changed to 1\n");
-			}
-		}
-		AND_WHEN("user enter SelectChannel command")
+		AND_WHEN("user enter SelectChannel without channel number")
 		{
 			input << "SelectChannel";
 			CRemoteControl rc(tv, input, output);
@@ -180,7 +170,7 @@ SCENARIO("Remote control for select TV channel", "[remote]")
 				CHECK(output.str() == "Error, wrong channel.\nUsage: channel >= 1 && channel <= 99\n");
 			}
 		}
-		AND_WHEN("user enter SelectChannel 0 command")
+		AND_WHEN("user enter SelectChannel on not existing channel")
 		{
 			input << "SelectChannel 0";
 			CRemoteControl rc(tv, input, output);
@@ -190,17 +180,7 @@ SCENARIO("Remote control for select TV channel", "[remote]")
 				CHECK(output.str() == "Error, wrong channel.\nUsage: channel >= 1 && channel <= 99\n");
 			}
 		}
-		AND_WHEN("user enter SelectChannel 100 command")
-		{
-			input << "SelectChannel 100";
-			CRemoteControl rc(tv, input, output);
-			rc.HandleCommand();
-			THEN("it is notified that turn on wrong channel")
-			{
-				CHECK(output.str() == "Error, wrong channel.\nUsage: channel >= 1 && channel <= 99\n");
-			}
-		}
-		AND_WHEN("user enter SelectChannel ort command but this channel not exists")
+		AND_WHEN("user enter SelectChannel by name but this channel not exists")
 		{
 			input << "SelectChannel ort";
 			CRemoteControl rc(tv, input, output);
@@ -210,7 +190,7 @@ SCENARIO("Remote control for select TV channel", "[remote]")
 				CHECK(output.str() == "Not found channel name: ort\n");
 			}
 		}
-		AND_WHEN("user enter SelectChannel 99 kanal command")
+		AND_WHEN("user enter SelectChannel by name, the name contains the channel number")
 		{
 			string kanal99 = "99 kanal";
 			tv.SetChannelName(99, kanal99);
@@ -222,7 +202,7 @@ SCENARIO("Remote control for select TV channel", "[remote]")
 				CHECK(output.str() == "TV channel changed to 99 kanal\n");
 			}
 		}
-		AND_WHEN("user enter SelectChannel v mire zhivotnih command")
+		AND_WHEN("user enter SelectChannel by channel, channel name consists of several words")
 		{
 			string kanal15 = "v mire zhivotnih";
 			tv.SetChannelName(15, kanal15);
@@ -296,7 +276,7 @@ SCENARIO("Remote control for set TV channel name", "[remote]")
 	GIVEN("A turned off TV")
 	{
 		REQUIRE(!tv.IsTurnedOn());
-		WHEN("user enter SetChannelName 2 ORT command")
+		WHEN("user enter SetChannelName command but TV turn off")
 		{
 			input << "SetChannelName 2 ORT";
 			CRemoteControl rc(tv, input, output);
@@ -312,17 +292,7 @@ SCENARIO("Remote control for set TV channel name", "[remote]")
 	{
 		tv.TurnOn();
 		REQUIRE(tv.IsTurnedOn());
-		WHEN("user enter SetChannelName 1 ORT command")
-		{
-			input << "SetChannelName 1 ORT";
-			CRemoteControl rc(tv, input, output);
-			rc.HandleCommand();
-			THEN("it is notified that channel name saved")
-			{
-				CHECK(output.str() == "TV channel 1 saved name: ORT\n");
-			}
-		}
-		AND_WHEN("user enter SetChannelName 99 v mire zhivotnih 99 command")
+		WHEN("user enter SetChannelName, the name of the channel consists of several words and contains channel number in the title")
 		{
 			input << "SetChannelName 99 v mire zhivotnih 99";
 			CRemoteControl rc(tv, input, output);
@@ -342,7 +312,7 @@ SCENARIO("Remote control for set TV channel name", "[remote]")
 				CHECK(output.str() == "TV channel 24 saved name: 24 kanal\n");
 			}
 		}
-		AND_WHEN("user enter SetChannelName 0 NTV command")
+		AND_WHEN("user enter SetChannelName, write the name to a non-existing channel")
 		{
 			input << "SetChannelName 0 NTV";
 			CRemoteControl rc(tv, input, output);
@@ -352,17 +322,7 @@ SCENARIO("Remote control for set TV channel name", "[remote]")
 				CHECK(output.str() == "Error, wrong channel.\nUsage: channel >= 1 && channel <= 99\n");
 			}
 		}
-		AND_WHEN("user enter SetChannelName 100 NTV command")
-		{
-			input << "SetChannelName 100 NTV";
-			CRemoteControl rc(tv, input, output);
-			rc.HandleCommand();
-			THEN("it is notified that turn on wrong channel")
-			{
-				CHECK(output.str() == "Error, wrong channel.\nUsage: channel >= 1 && channel <= 99\n");
-			}
-		}
-		AND_WHEN("user enter SetChannelName NTV command")
+		AND_WHEN("user enter SetChannelName without entering the channel number")
 		{
 			input << "SetChannelName NTV";
 			CRemoteControl rc(tv, input, output);
@@ -372,7 +332,7 @@ SCENARIO("Remote control for set TV channel name", "[remote]")
 				CHECK(output.str() == "Error, wrong channel.\nUsage: channel >= 1 && channel <= 99\n");
 			}
 		}
-		AND_WHEN("user enter SetChannelName 18 command")
+		AND_WHEN("user enter SetChannelName, input channel number only")
 		{
 			input << "SetChannelName 18";
 			CRemoteControl rc(tv, input, output);
@@ -394,7 +354,7 @@ SCENARIO("Remote control for get TV channel name by number", "[remote]")
 	GIVEN("A turned off TV")
 	{
 		REQUIRE(!tv.IsTurnedOn());
-		WHEN("user enter GetChannelName 2 command")
+		WHEN("user enter GetChannelName command, TV is turn off")
 		{
 			input << "GetChannelName 2";
 			CRemoteControl rc(tv, input, output);
@@ -420,7 +380,7 @@ SCENARIO("Remote control for get TV channel name by number", "[remote]")
 				CHECK(output.str() == "TV channel: 1 has not name\n");
 			}
 		}
-		AND_WHEN("user enter GetChannelName 1 command")
+		AND_WHEN("user enter GetChannelName existing channel")
 		{
 			string ntv = "NTV";
 			tv.SetChannelName(1, ntv);
@@ -432,19 +392,7 @@ SCENARIO("Remote control for get TV channel name by number", "[remote]")
 				CHECK(output.str() == "TV channel: 1 - NTV\n");
 			}
 		}
-		AND_WHEN("user enter GetChannelName 99 command")
-		{
-			string ort = "ORT";
-			tv.SetChannelName(99, ort);
-			input << "GetChannelName 99";
-			CRemoteControl rc(tv, input, output);
-			rc.HandleCommand();
-			THEN("it is notified that found channel name")
-			{
-				CHECK(output.str() == "TV channel: 99 - ORT\n");
-			}
-		}
-		AND_WHEN("user enter GetChannelName 0 command")
+		AND_WHEN("user enter GetChannelName not existing channel")
 		{
 			input << "GetChannelName 0";
 			CRemoteControl rc(tv, input, output);
@@ -454,17 +402,7 @@ SCENARIO("Remote control for get TV channel name by number", "[remote]")
 				CHECK(output.str() == "Error, wrong channel.\nUsage: channel >= 1 && channel <= 99\n");
 			}
 		}
-		AND_WHEN("user enter GetChannelName 100 command")
-		{
-			input << "GetChannelName 100";
-			CRemoteControl rc(tv, input, output);
-			rc.HandleCommand();
-			THEN("it is notified that turn on wrong channel")
-			{
-				CHECK(output.str() == "Error, wrong channel.\nUsage: channel >= 1 && channel <= 99\n");
-			}
-		}
-		AND_WHEN("user enter GetChannelName command")
+		AND_WHEN("user enter GetChannelName without channel number")
 		{
 			input << "GetChannelName";
 			CRemoteControl rc(tv, input, output);
@@ -486,7 +424,7 @@ SCENARIO("Remote control for get TV channel number by name", "[remote]")
 	GIVEN("A turned off TV")
 	{
 		REQUIRE(!tv.IsTurnedOn());
-		WHEN("user enter GetChannelByName ORT command")
+		WHEN("user enter GetChannelByName command but TV is turn off")
 		{
 			input << "GetChannelByName ORT";
 			CRemoteControl rc(tv, input, output);
@@ -512,7 +450,7 @@ SCENARIO("Remote control for get TV channel number by name", "[remote]")
 				CHECK(output.str() == "TV channel: ORT not found\n");
 			}
 		}
-		AND_WHEN("user enter GetChannelByName NTV command")
+		AND_WHEN("user enter GetChannelByName with existing name")
 		{
 			string ntv = "NTV";
 			tv.SetChannelName(1, ntv);
@@ -524,7 +462,7 @@ SCENARIO("Remote control for get TV channel number by name", "[remote]")
 				CHECK(output.str() == "TV channel: 1 - NTV\n");
 			}
 		}
-		AND_WHEN("user enter GetChannelByName 99 kanal command")
+		AND_WHEN("user enter GetChannelByName with existing name, as part of the channel number")
 		{
 			string kanal99 = "99 kanal";
 			tv.SetChannelName(99, kanal99);
@@ -536,7 +474,7 @@ SCENARIO("Remote control for get TV channel number by name", "[remote]")
 				CHECK(output.str() == "TV channel: 99 - 99 kanal\n");
 			}
 		}
-		AND_WHEN("user enter GetChannelByName command")
+		AND_WHEN("user enter GetChannelByName without name")
 		{
 			input << "GetChannelByName";
 			CRemoteControl rc(tv, input, output);
@@ -558,7 +496,7 @@ SCENARIO("Remote control for delete TV channel name by name", "[remote]")
 	GIVEN("A turned off TV")
 	{
 		REQUIRE(!tv.IsTurnedOn());
-		WHEN("user enter DeleteChannelName ORT command")
+		WHEN("user enter DeleteChannelName, but TV is turn off")
 		{
 			input << "DeleteChannelName ORT";
 			CRemoteControl rc(tv, input, output);
@@ -574,7 +512,7 @@ SCENARIO("Remote control for delete TV channel name by name", "[remote]")
 	{
 		tv.TurnOn();
 		REQUIRE(tv.IsTurnedOn());
-		WHEN("user enter DeleteChannelName ORT command, first turn on")
+		WHEN("user enter DeleteChannelName, first turn on")
 		{
 			input << "DeleteChannelName ORT";
 			CRemoteControl rc(tv, input, output);
@@ -584,7 +522,7 @@ SCENARIO("Remote control for delete TV channel name by name", "[remote]")
 				CHECK(output.str() == "TV channel: ORT not found\n");
 			}
 		}
-		AND_WHEN("user enter DeleteChannelName NTV command")
+		AND_WHEN("user enter DeleteChannelName with existing name")
 		{
 			string ntv = "NTV";
 			tv.SetChannelName(1, ntv);
@@ -596,7 +534,7 @@ SCENARIO("Remote control for delete TV channel name by name", "[remote]")
 				CHECK(output.str() == "Delete TV channel Name: NTV\n");
 			}
 		}
-		AND_WHEN("user enter DeleteChannelName 99 kanal command")
+		AND_WHEN("user enter DeleteChannelName with existing name, as part of the channel number")
 		{
 			string kanal99 = "99 kanal";
 			tv.SetChannelName(99, kanal99);
@@ -606,16 +544,6 @@ SCENARIO("Remote control for delete TV channel name by name", "[remote]")
 			THEN("it is notified that found channel number")
 			{
 				CHECK(output.str() == "Delete TV channel Name: 99 kanal\n");
-			}
-		}
-		AND_WHEN("user enter DeleteChannelName command, first turn on")
-		{
-			input << "DeleteChannelName";
-			CRemoteControl rc(tv, input, output);
-			rc.HandleCommand();
-			THEN("it is notified that not found this channel")
-			{
-				CHECK(output.str() == "TV channel:  not found\n");
 			}
 		}
 	}

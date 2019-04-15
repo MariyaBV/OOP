@@ -17,7 +17,7 @@ public:
 	bool SelectPreviousChannel();
 
 	bool SetChannelName(int channel, const std::string& channelName);
-	std::vector<std::string> GetAllChannels() const;
+	std::map<int, std::string> GetAllChannels() const;
 	bool DeleteChannelName(const std::string& channelName);
 	std::string GetChannelName(int channel) const;
 	size_t GetChannelByName(const std::string& nameChannel) const;

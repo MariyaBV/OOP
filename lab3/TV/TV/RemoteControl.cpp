@@ -63,12 +63,12 @@ bool CRemoteControl::Info(istream& args)
 
 	if (m_tv.IsTurnedOn())
 	{
-		for (size_t i = 0; i < (m_tv.GetAllChannels()).size(); i++)
+		map<int, string> allChannelWithName;
+		allChannelWithName = m_tv.GetAllChannels();
+		if (!allChannelWithName.empty())
 		{
-			if (!m_tv.GetAllChannels()[i].empty())
-			{
-				m_output << i + 1 << " - " << m_tv.GetAllChannels()[i] << endl;
-			}
+			for (map<int, string>::iterator it = allChannelWithName.begin(); it != allChannelWithName.end(); ++it)
+				m_output << it->first << " - " << it->second << endl;
 		}
 	}
 

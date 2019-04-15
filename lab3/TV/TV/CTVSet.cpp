@@ -88,26 +88,35 @@ bool CTVSet::SetChannelName(int channel, const std::string& channelName)
 	return false;
 }
 
-std::vector<std::string> CTVSet::GetAllChannels() const
+std::map<int, std::string> CTVSet::GetAllChannels() const
 {
-	return m_channelNames;
+	std::map<int, std::string> allChannelWithName;
+
+	for (size_t i = 0; i < m_channelNames.size(); i++)
+	{
+		if (!m_channelNames[i].empty())
+		{
+			allChannelWithName[i + 1] = m_channelNames[i];
+		}
+	}
+
+	return allChannelWithName;
 }
 
 bool CTVSet::DeleteChannelName(const std::string& channelName)
 {
 	if (!channelName.empty())
 	{
-		for (auto& value : m_channelNames)
+		std::vector<std::string>::const_iterator it;
+		it = find(m_channelNames.begin(), m_channelNames.end(), channelName);
+		if (it != m_channelNames.end())
 		{
-			if (value == channelName)
-			{
-				value.clear();
+			int channelNumber = it - m_channelNames.begin();
+			m_channelNames[channelNumber].clear();
 
-				return true;
-			}
+			return true;
+
 		}
-		/*m_channelNames.erase(std::remove(m_channelNames.begin(), m_channelNames.end(), channelName),
-			m_channelNames.end());*/
 	}
 
 	return false;
