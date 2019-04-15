@@ -164,6 +164,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\GeometricFigures\AdditionalFunction.h" />
+    <ClInclude Include="..\GeometricFigures\CCircle.h" />
     <ClInclude Include="..\GeometricFigures\CLineSegment.h" />
     <ClInclude Include="..\GeometricFigures\CPoint.h" />
     <ClInclude Include="..\GeometricFigures\CRectangle.h" />
@@ -176,12 +177,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\GeometricFigures\additionalFunction.cpp" />
+    <ClCompile Include="..\GeometricFigures\CCircle.cpp" />
     <ClCompile Include="..\GeometricFigures\CLineSegment.cpp" />
     <ClCompile Include="..\GeometricFigures\CRectangle.cpp" />
     <ClCompile Include="..\GeometricFigures\CShape.cpp" />
     <ClCompile Include="..\GeometricFigures\CSolidShape.cpp" />
     <ClCompile Include="..\GeometricFigures\CTriangle.cpp" />
     <ClCompile Include="AdditionalFunction-tests.cpp" />
+    <ClCompile Include="CircleTests.cpp" />
     <ClCompile Include="LineSegmentTests.cpp" />
     <ClCompile Include="main.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>

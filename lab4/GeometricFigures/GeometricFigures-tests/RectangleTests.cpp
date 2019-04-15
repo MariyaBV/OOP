@@ -12,34 +12,34 @@ SCENARIO("Rectangle")
 		WHEN("2 points, no color specified")
 		{
 			std::string outlineColor, fillColor;
-			CRectangle rectangle1(leftTop, rightBottom, outlineColor, fillColor);
+			CRectangle rectangle(leftTop, rightBottom, outlineColor, fillColor);
 
 			THEN("get area")
 			{
-				CHECK(rectangle1.GetArea() == 8.00);
+				CHECK(rectangle.GetArea() == 8.00);
 			}
 			AND_THEN("get perimetr")
 			{
-				CHECK(rectangle1.GetPerimeter() == 12.00);
+				CHECK(rectangle.GetPerimeter() == 12.00);
 			}
 			AND_THEN("get outline color")
 			{
-				CHECK(rectangle1.GetOutlineColor() == 000000);
+				CHECK(rectangle.GetOutlineColor() == 000000);
 			}
 			AND_THEN("get fill color")
 			{
-				CHECK(rectangle1.GetFillColor() == 000000);
+				CHECK(rectangle.GetFillColor() == 000000);
 			}
 			AND_THEN("vertex, width, height")
 			{
-				CHECK(rectangle1.GetLeftTop().x == 2);
-				CHECK(rectangle1.GetLeftTop().y == 0);
+				CHECK(rectangle.GetLeftTop().x == 2);
+				CHECK(rectangle.GetLeftTop().y == 0);
 
-				CHECK(rectangle1.GetRightBottom().x == 0);
-				CHECK(rectangle1.GetRightBottom().y == 4);
+				CHECK(rectangle.GetRightBottom().x == 0);
+				CHECK(rectangle.GetRightBottom().y == 4);
 
-				CHECK(rectangle1.GetHeight() == 2);
-				CHECK(rectangle1.GetWidth() == 4);
+				CHECK(rectangle.GetHeight() == 2);
+				CHECK(rectangle.GetWidth() == 4);
 			}
 			AND_THEN("information")
 			{
@@ -53,7 +53,7 @@ SCENARIO("Rectangle")
 							"\twidth = 4.00\n"
 							"\theight = 2.00\n";
 
-				CHECK(rectangle1.ToString() == str1);
+				CHECK(rectangle.ToString() == str1);
 			}
 		}
 	}
@@ -66,34 +66,34 @@ SCENARIO("Rectangle")
 		{
 			std::string outlineColor = "7722ff";
 			std::string fillColor = "ff5500";
-			CRectangle rectangle1(leftTop, rightBottom, outlineColor, fillColor);
+			CRectangle rectangle(leftTop, rightBottom, outlineColor, fillColor);
 
 			THEN("get area")
 			{
-				CHECK(rectangle1.GetArea() == 0.00);
+				CHECK(rectangle.GetArea() == 0.00);
 			}
 			AND_THEN("get perimetr")
 			{
-				CHECK(rectangle1.GetPerimeter() == 8.00);
+				CHECK(rectangle.GetPerimeter() == 8.00);
 			}
 			AND_THEN("get outline color")
 			{
-				CHECK(rectangle1.GetOutlineColor() == FromStringToUINT32(outlineColor));
+				CHECK(rectangle.GetOutlineColor() == FromStringToUINT32(outlineColor));
 			}
 			AND_THEN("get fill color")
 			{
-				CHECK(rectangle1.GetFillColor() == FromStringToUINT32(fillColor));
+				CHECK(rectangle.GetFillColor() == FromStringToUINT32(fillColor));
 			}
 			AND_THEN("vertex, width, height")
 			{
-				CHECK(rectangle1.GetLeftTop().x == 0);
-				CHECK(rectangle1.GetLeftTop().y == 0);
+				CHECK(rectangle.GetLeftTop().x == 0);
+				CHECK(rectangle.GetLeftTop().y == 0);
 
-				CHECK(rectangle1.GetRightBottom().x == 0);
-				CHECK(rectangle1.GetRightBottom().y == 4);
+				CHECK(rectangle.GetRightBottom().x == 0);
+				CHECK(rectangle.GetRightBottom().y == 4);
 
-				CHECK(rectangle1.GetHeight() == 0);
-				CHECK(rectangle1.GetWidth() == 4);
+				CHECK(rectangle.GetHeight() == 0);
+				CHECK(rectangle.GetWidth() == 4);
 			}
 			AND_THEN("information")
 			{
@@ -107,7 +107,7 @@ SCENARIO("Rectangle")
 							"\twidth = 4.00\n"
 							"\theight = 0.00\n";
 
-				CHECK(rectangle1.ToString() == str1);
+				CHECK(rectangle.ToString() == str1);
 			}
 		}
 	}

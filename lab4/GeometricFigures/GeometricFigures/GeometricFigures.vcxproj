@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AdditionalFunction.h" />
+    <ClInclude Include="CCircle.h" />
     <ClInclude Include="CLineSegment.h" />
     <ClInclude Include="CPoint.h" />
     <ClInclude Include="CRectangle.h" />
@@ -165,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="additionalFunction.cpp" />
+    <ClCompile Include="CCircle.cpp" />
     <ClCompile Include="CLineSegment.cpp" />
     <ClCompile Include="CRectangle.cpp" />
     <ClCompile Include="CShape.cpp" />

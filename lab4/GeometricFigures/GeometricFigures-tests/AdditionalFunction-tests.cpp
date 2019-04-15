@@ -15,7 +15,7 @@ TEST_CASE("from string to uint32_t")
 
 TEST_CASE("is equal")
 {
-	CHECK_FALSE(isEqual(1.0001, 1.0002));
-	CHECK(isEqual(1.00123, 1.001234));
-	CHECK(isEqual(1.001237, 1.001235));
+	CHECK_FALSE(IsEqual(1.0001, 1.0002));
+	CHECK(IsEqual(1.00123, 1.001234));
+	CHECK(IsEqual(1.001237, 1.001235));
 }

@@ -21,7 +21,7 @@ SCENARIO("Triangle")
 			}
 			AND_THEN("get perimetr")
 			{
-				CHECK(isEqual(triangle1.GetPerimeter(), 6.82843));
+				CHECK(IsEqual(triangle1.GetPerimeter(), 6.82843));
 			}
 			AND_THEN("get outline color")
 			{
@@ -67,34 +67,34 @@ SCENARIO("Triangle")
 		{
 			std::string outlineColor = "FF2200";
 			std::string fillColor = "22FF00";
-			CTriangle triangle1(vertex1, vertex2, vertex3, outlineColor, fillColor);
+			CTriangle triangle2(vertex1, vertex2, vertex3, outlineColor, fillColor);
 
 			THEN("get area")
 			{
-				CHECK(triangle1.GetArea() == 0.00);
+				CHECK(triangle2.GetArea() == 0.00);
 			}
 			AND_THEN("get perimetr")
 			{
-				CHECK(triangle1.GetPerimeter() == 4.00);
+				CHECK(triangle2.GetPerimeter() == 4.00);
 			}
 			AND_THEN("get outline color")
 			{
-				CHECK(triangle1.GetOutlineColor() == FromStringToUINT32(outlineColor));
+				CHECK(triangle2.GetOutlineColor() == FromStringToUINT32(outlineColor));
 			}
 			AND_THEN("get fill color")
 			{
-				CHECK(triangle1.GetFillColor() == FromStringToUINT32(fillColor));
+				CHECK(triangle2.GetFillColor() == FromStringToUINT32(fillColor));
 			}
 			AND_THEN("vertex")
 			{
-				CHECK(triangle1.GetVertex1().x == 0);
-				CHECK(triangle1.GetVertex1().y == 1);
+				CHECK(triangle2.GetVertex1().x == 0);
+				CHECK(triangle2.GetVertex1().y == 1);
 
-				CHECK(triangle1.GetVertex2().x == 0);
-				CHECK(triangle1.GetVertex2().y == 2);
+				CHECK(triangle2.GetVertex2().x == 0);
+				CHECK(triangle2.GetVertex2().y == 2);
 
-				CHECK(triangle1.GetVertex3().x == 0);
-				CHECK(triangle1.GetVertex3().y == 0);
+				CHECK(triangle2.GetVertex3().x == 0);
+				CHECK(triangle2.GetVertex3().y == 0);
 			}
 			AND_THEN("information")
 			{
@@ -107,7 +107,7 @@ SCENARIO("Triangle")
 							"\tvertex2(0.00, 2.00)\n"
 							"\tvertex3(0.00, 0.00)\n";
 
-				CHECK(triangle1.ToString() == str1);
+				CHECK(triangle2.ToString() == str1);
 			}
 		}
 	}
