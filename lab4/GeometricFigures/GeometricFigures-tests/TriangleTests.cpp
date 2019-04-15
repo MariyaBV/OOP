@@ -57,13 +57,13 @@ SCENARIO("Triangle")
 			}
 		}
 	}
-	GIVEN("3 points and color")
+	GIVEN("3 points on one segment and color")
 	{
 		CPoint vertex1 = { 0.0, 1.0 };
 		CPoint vertex2 = { 0.0, 2.0 };
 		CPoint vertex3 = { 0.0, 0.0 };
 
-		WHEN("3 points, no color specified")
+		WHEN("3 points and color")
 		{
 			std::string outlineColor = "FF2200";
 			std::string fillColor = "22FF00";
