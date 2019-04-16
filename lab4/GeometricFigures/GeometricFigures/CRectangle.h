@@ -6,7 +6,7 @@ class CRectangle : public CSolidShape
 {
 public:
 	virtual ~CRectangle();
-	CRectangle(CPoint& leftTop, CPoint& rightBottom, std::string& outlineColor, std::string& fillColor);
+	CRectangle(CPoint const& leftTop, CPoint const& rightBottom, std::string& outlineColor, std::string & fillColor);
 
 	double GetArea() const override;
 	double GetPerimeter() const override;

@@ -7,7 +7,7 @@ using namespace std;
 class CShape : public virtual IShape
 {
 public:
-	CShape(const string& type, string & outlineColor);
+	CShape(string const& type, string & outlineColor);
 	virtual ~CShape();
 
 	uint32_t GetOutlineColor() const override;

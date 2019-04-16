@@ -5,7 +5,7 @@
 
 using namespace std;
 
-CShape::CShape(const string& type, string& outlineColor)
+CShape::CShape(string const& type, string& outlineColor)
 	: m_type(type)
 	, m_outlineColor(FromStringToUINT32(outlineColor))
 {

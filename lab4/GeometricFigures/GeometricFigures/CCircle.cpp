@@ -3,7 +3,7 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-CCircle::CCircle(CPoint& center, double& radius, std::string& outlineColor, std::string& fillColor)
+CCircle::CCircle(CPoint const& center, double const& radius, std::string& outlineColor, std::string & fillColor)
 	: m_center(center)
 	, m_radius(radius)
 	, CSolidShape("Circle", outlineColor, fillColor)

@@ -4,7 +4,7 @@
 
 using namespace std;
 
-CSolidShape::CSolidShape(const string& type, string& outlineColor, string& fillColor)
+CSolidShape::CSolidShape(string const& type, string& outlineColor, string& fillColor)
 	: CShape(type, outlineColor)
 	, m_fillColor(FromStringToUINT32(fillColor))
 {

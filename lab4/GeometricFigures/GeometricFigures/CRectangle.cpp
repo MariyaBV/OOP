@@ -6,7 +6,7 @@ CRectangle::~CRectangle()
 {
 }
 
-CRectangle::CRectangle(CPoint& leftTop, CPoint& rightBottom, std::string& outlineColor, std::string& fillColor)
+CRectangle::CRectangle(CPoint const& leftTop, CPoint const& rightBottom, std::string& outlineColor, std::string& fillColor)
 	: m_leftTop(leftTop)
 	, m_rightBottom(rightBottom)
 	, CSolidShape("Rectangle", outlineColor, fillColor)

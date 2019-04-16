@@ -2,7 +2,7 @@
 #include "CLineSegment.h"
 #include "CShape.h"
 
-CLineSegment::CLineSegment(CPoint& startPont, CPoint& endPoint, std::string& outlineColor)
+CLineSegment::CLineSegment(CPoint const& startPont, CPoint& endPoint, std::string& outlineColor)
 	: m_startPoint(startPont)
 	, m_endPoint(endPoint)
 	, CShape("LineSegment", outlineColor)

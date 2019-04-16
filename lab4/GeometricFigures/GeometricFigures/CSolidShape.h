@@ -7,7 +7,7 @@ using namespace std;
 class CSolidShape : public ISolidShape, public CShape
 {
 public:
-	CSolidShape(const string& type, string& outlineColor, string& fillColor);
+	CSolidShape(string const& type, string& outlineColor, string & fillColor);
 	virtual ~CSolidShape();
 
 	uint32_t GetFillColor() const override;
