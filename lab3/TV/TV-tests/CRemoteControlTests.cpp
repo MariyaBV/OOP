@@ -69,7 +69,7 @@ SCENARIO("Remote control provides information about TV", "[remote]")
 	GIVEN("A turned on TV")
 	{
 		tv.TurnOn();
-		tv.SelectChannel(17);
+		REQUIRE(tv.SelectChannel(17));
 		REQUIRE(tv.IsTurnedOn());
 		WHEN("user enter Info command")
 		{
@@ -82,8 +82,8 @@ SCENARIO("Remote control provides information about TV", "[remote]")
 
 		string ort = "ORT";
 		string kanal24 = "24 kanal";
-		tv.SetChannelName(1, ort);
-		tv.SetChannelName(24, kanal24);
+		CHECK(tv.SetChannelName(1, ort));
+		CHECK(tv.SetChannelName(24, kanal24));
 		WHEN("user saved names of channels")
 		{
 			rc.HandleCommand();
@@ -93,7 +93,7 @@ SCENARIO("Remote control provides information about TV", "[remote]")
 			}
 		}
 
-		tv.SetChannelName(30, ort);
+		CHECK(tv.SetChannelName(30, ort));
 		WHEN("user saved name if the specified name has already been assigned to another channel")
 		{
 			rc.HandleCommand();
@@ -103,7 +103,7 @@ SCENARIO("Remote control provides information about TV", "[remote]")
 			}
 		}
 
-		tv.DeleteChannelName(kanal24);
+		CHECK(tv.DeleteChannelName(kanal24));
 		WHEN("delete channel")
 		{
 			rc.HandleCommand();
@@ -159,6 +159,7 @@ SCENARIO("Remote control for select TV channel", "[remote]")
 			{
 				CHECK(output.str() == "TV channel changed to 99\n");
 			}
+			CHECK(tv.GetChannelNumber() == 99);
 		}
 		AND_WHEN("user enter SelectChannel without channel number")
 		{
@@ -169,6 +170,7 @@ SCENARIO("Remote control for select TV channel", "[remote]")
 			{
 				CHECK(output.str() == "Error, wrong channel.\nUsage: channel >= 1 && channel <= 99\n");
 			}
+			CHECK(tv.GetChannelNumber() == 1);
 		}
 		AND_WHEN("user enter SelectChannel on not existing channel")
 		{
@@ -179,6 +181,7 @@ SCENARIO("Remote control for select TV channel", "[remote]")
 			{
 				CHECK(output.str() == "Error, wrong channel.\nUsage: channel >= 1 && channel <= 99\n");
 			}
+			CHECK(tv.GetChannelNumber() == 1);
 		}
 		AND_WHEN("user enter SelectChannel by name but this channel not exists")
 		{
@@ -189,6 +192,7 @@ SCENARIO("Remote control for select TV channel", "[remote]")
 			{
 				CHECK(output.str() == "Not found channel name: ort\n");
 			}
+			CHECK(tv.GetChannelNumber() == 1);
 		}
 		AND_WHEN("user enter SelectChannel by name, the name contains the channel number")
 		{
@@ -201,6 +205,7 @@ SCENARIO("Remote control for select TV channel", "[remote]")
 			{
 				CHECK(output.str() == "TV channel changed to 99 kanal\n");
 			}
+			CHECK(tv.GetChannelNumber() == 99);
 		}
 		AND_WHEN("user enter SelectChannel by channel, channel name consists of several words")
 		{
@@ -213,6 +218,7 @@ SCENARIO("Remote control for select TV channel", "[remote]")
 			{
 				CHECK(output.str() == "TV channel changed to v mire zhivotnih\n");
 			}
+			CHECK(tv.GetChannelNumber() == 15);
 		}
 	}
 }
@@ -251,6 +257,7 @@ SCENARIO("Remote control for select previous TV channel", "[remote]")
 			{
 				CHECK(output.str() == "TV channel changed to 1\n");
 			}
+			CHECK(tv.GetChannelNumber() == 1);
 		}
 		AND_WHEN("user enter SelectPreviousChannel command")
 		{
@@ -263,6 +270,7 @@ SCENARIO("Remote control for select previous TV channel", "[remote]")
 			{
 				CHECK(output.str() == "TV channel changed to 2\n");
 			}
+			CHECK(tv.GetChannelNumber() == 2);
 		}
 	}
 }
@@ -301,6 +309,7 @@ SCENARIO("Remote control for set TV channel name", "[remote]")
 			{
 				CHECK(output.str() == "TV channel 99 saved name: v mire zhivotnih 99\n");
 			}
+			CHECK(tv.GetChannelName(99) == "v mire zhivotnih 99");
 		}
 		AND_WHEN("user enter SetChannelName, write the name to a non-existing channel")
 		{
@@ -331,6 +340,7 @@ SCENARIO("Remote control for set TV channel name", "[remote]")
 			{
 				CHECK(output.str() == "TV channel 18 saved name: \n");
 			}
+			CHECK(tv.GetChannelName(18) == "");
 		}
 	}
 }
@@ -369,6 +379,7 @@ SCENARIO("Remote control for get TV channel name by number", "[remote]")
 			{
 				CHECK(output.str() == "TV channel: 1 has not name\n");
 			}
+			CHECK(tv.GetChannelName(1) == "");
 		}
 		AND_WHEN("user enter GetChannelName existing channel")
 		{
@@ -381,6 +392,7 @@ SCENARIO("Remote control for get TV channel name by number", "[remote]")
 			{
 				CHECK(output.str() == "TV channel: 1 - NTV\n");
 			}
+			CHECK(tv.GetChannelName(1) == "NTV");
 		}
 		AND_WHEN("user enter GetChannelName not existing channel")
 		{
@@ -439,6 +451,7 @@ SCENARIO("Remote control for get TV channel number by name", "[remote]")
 			{
 				CHECK(output.str() == "TV channel: ORT not found\n");
 			}
+			CHECK(tv.GetChannelByName("ORT") == 0);
 		}
 		AND_WHEN("user enter GetChannelByName with existing name")
 		{
@@ -451,6 +464,8 @@ SCENARIO("Remote control for get TV channel number by name", "[remote]")
 			{
 				CHECK(output.str() == "TV channel: 1 - NTV\n");
 			}
+			CHECK(tv.GetChannelByName("NTV") == 1);
+			CHECK(tv.GetChannelName(1) == "NTV");
 		}
 		AND_WHEN("user enter GetChannelByName with existing name, as part of the channel number")
 		{
@@ -463,6 +478,8 @@ SCENARIO("Remote control for get TV channel number by name", "[remote]")
 			{
 				CHECK(output.str() == "TV channel: 99 - 99 kanal\n");
 			}
+			CHECK(tv.GetChannelByName("99 kanal") == 99);
+			CHECK(tv.GetChannelName(99) == "99 kanal");
 		}
 		AND_WHEN("user enter GetChannelByName without name")
 		{
@@ -504,6 +521,7 @@ SCENARIO("Remote control for delete TV channel name by name", "[remote]")
 		REQUIRE(tv.IsTurnedOn());
 		WHEN("user enter DeleteChannelName, first turn on")
 		{
+			CHECK(tv.GetChannelByName("ORT") == 0);
 			input << "DeleteChannelName ORT";
 			CRemoteControl rc(tv, input, output);
 			rc.HandleCommand();
@@ -523,6 +541,8 @@ SCENARIO("Remote control for delete TV channel name by name", "[remote]")
 			{
 				CHECK(output.str() == "Delete TV channel Name: NTV\n");
 			}
+			CHECK(tv.GetChannelByName("NTV") == 0);
+			CHECK(tv.GetChannelName(1) == "");
 		}
 		AND_WHEN("user enter DeleteChannelName with existing name, as part of the channel number")
 		{
@@ -535,6 +555,8 @@ SCENARIO("Remote control for delete TV channel name by name", "[remote]")
 			{
 				CHECK(output.str() == "Delete TV channel Name: 99 kanal\n");
 			}
+			CHECK(tv.GetChannelByName("99 kanal") == 0);
+			CHECK(tv.GetChannelName(99) == "");
 		}
 	}
 }

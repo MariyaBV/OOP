@@ -86,17 +86,17 @@ bool CTVSet::SetChannelName(int channel, const std::string& channelName)
 
 std::map<int, std::string> CTVSet::GetAllChannels() const
 {
-	std::map<int, std::string> allChannelWithName;
+	std::map<int, std::string> allChannelsWithName;
 
 	for (size_t i = 0; i < m_channelNames.size(); i++)
 	{
 		if (!m_channelNames[i].empty())
 		{
-			allChannelWithName[static_cast<int>(i)] = m_channelNames[static_cast<int> (i)];
+			allChannelsWithName[static_cast<int>(i)] = m_channelNames[static_cast<int> (i)];
 		}
 	}
 
-	return allChannelWithName;
+	return allChannelsWithName;
 }
 
 bool CTVSet::DeleteChannelName(const std::string& channelName)
