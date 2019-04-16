@@ -302,16 +302,6 @@ SCENARIO("Remote control for set TV channel name", "[remote]")
 				CHECK(output.str() == "TV channel 99 saved name: v mire zhivotnih 99\n");
 			}
 		}
-		AND_WHEN("user enter SetChannelName 24 24 kanal command")
-		{
-			input << "SetChannelName   24   24   kanal  ";
-			CRemoteControl rc(tv, input, output);
-			rc.HandleCommand();
-			THEN("it is notified that channel name saved")
-			{
-				CHECK(output.str() == "TV channel 24 saved name: 24 kanal\n");
-			}
-		}
 		AND_WHEN("user enter SetChannelName, write the name to a non-existing channel")
 		{
 			input << "SetChannelName 0 NTV";

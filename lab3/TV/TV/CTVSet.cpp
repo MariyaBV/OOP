@@ -4,11 +4,7 @@
 
 CTVSet::CTVSet()
 {
-	m_channelNames.resize(99);
-}
-
-CTVSet::~CTVSet()
-{
+	m_channelNames.resize(100);
 }
 
 void CTVSet::TurnOff()
@@ -53,7 +49,7 @@ bool CTVSet::SelectChannel(const std::string& channelName)
 			if (m_channelNames[i] == channelName)
 			{
 				m_previousSelectedChannel = m_selectedChannel;
-				m_selectedChannel = i + 1;
+				m_selectedChannel = i;
 
 				return true;
 			}
@@ -80,7 +76,7 @@ bool CTVSet::SetChannelName(int channel, const std::string& channelName)
 	if ((channel >= 1) && (channel <= 99) && m_isOn)
 	{
 		DeleteChannelName(channelName);
-		m_channelNames[channel - 1] = channelName;
+		m_channelNames[channel] = channelName;
 
 		return true;
 	}
@@ -96,7 +92,7 @@ std::map<int, std::string> CTVSet::GetAllChannels() const
 	{
 		if (!m_channelNames[i].empty())
 		{
-			allChannelWithName[i + 1] = m_channelNames[i];
+			allChannelWithName[static_cast<int>(i)] = m_channelNames[static_cast<int> (i)];
 		}
 	}
 
@@ -107,11 +103,10 @@ bool CTVSet::DeleteChannelName(const std::string& channelName)
 {
 	if (!channelName.empty())
 	{
-		std::vector<std::string>::const_iterator it;
-		it = find(m_channelNames.begin(), m_channelNames.end(), channelName);
-		if (it != m_channelNames.end())
+		if (auto it = find(m_channelNames.begin(), m_channelNames.end(), channelName);
+			it != m_channelNames.end())
 		{
-			int channelNumber = it - m_channelNames.begin();
+			int channelNumber = static_cast<int>(it - m_channelNames.begin());
 			m_channelNames[channelNumber].clear();
 
 			return true;
@@ -126,7 +121,7 @@ std::string CTVSet::GetChannelName(int channel) const
 {
 	if ((channel >= 1) && (channel <= 99) && m_isOn)
 	{
-		return m_channelNames[channel - 1];
+		return m_channelNames[channel];
 	}
 
 	return "";
@@ -139,7 +134,7 @@ size_t CTVSet::GetChannelByName(const std::string& channelName) const
 		std::vector<std::string>::const_iterator it;
 		it = std::find(m_channelNames.begin(), m_channelNames.end(), channelName);
 		if (it != m_channelNames.end())
-			return std::distance(m_channelNames.begin(), it) + 1;
+			return std::distance(m_channelNames.begin(), it);
 	}
 
 	return 0;
