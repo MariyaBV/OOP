@@ -5,7 +5,7 @@
 
 using namespace std;
 
-CCircle::CCircle(CPoint const& center, double const& radius, string& outlineColor, string & fillColor)
+CCircle::CCircle(CPoint const& center, double const& radius, string& outlineColor, string& fillColor)
 	: m_center(center)
 	, m_radius(radius)
 	, CSolidShape("Circle", outlineColor, fillColor)

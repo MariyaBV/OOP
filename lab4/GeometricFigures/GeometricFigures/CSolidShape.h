@@ -1,11 +1,12 @@
 #pragma once
-#include "ISolidShape.h"
 #include "CShape.h"
+#include "ISolidShape.h"
 
-class CSolidShape : public ISolidShape, public CShape
+class CSolidShape : public ISolidShape
+	, public CShape
 {
 public:
-	CSolidShape(std::string const& type, std::string& outlineColor, std::string & fillColor);
+	CSolidShape(std::string const& type, std::string& outlineColor, std::string& fillColor);
 
 	uint32_t GetFillColor() const override;
 	std::string ToString() const;

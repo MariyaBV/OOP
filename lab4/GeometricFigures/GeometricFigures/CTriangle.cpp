@@ -43,8 +43,8 @@ CPoint CTriangle::GetVertex3() const
 
 void CTriangle::AppendProperties2(ostream& strm) const
 {
-	strm << fixed << setprecision(2) 
-		<< "\tvertex1(" << m_vertex1.x << ", " << m_vertex1.y << ")" << endl
-		<< "\tvertex2(" << m_vertex2.x << ", " << m_vertex2.y << ")" << endl
-		<< "\tvertex3(" << m_vertex3.x << ", " << m_vertex3.y << ")" << endl;
+	strm << fixed << setprecision(2)
+		 << "\tvertex1(" << m_vertex1.x << ", " << m_vertex1.y << ")" << endl
+		 << "\tvertex2(" << m_vertex2.x << ", " << m_vertex2.y << ")" << endl
+		 << "\tvertex3(" << m_vertex3.x << ", " << m_vertex3.y << ")" << endl;
 }

@@ -2,7 +2,6 @@
 #include "IShape.h"
 #include <boost/noncopyable.hpp>
 
-
 // Наследование от boost::noncopyable - явный способ запретить копирование и присваивание экземпляров класса
 class CShapeAction : boost::noncopyable
 {

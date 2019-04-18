@@ -1,6 +1,6 @@
 #pragma once
-#include "CSolidShape.h"
 #include "CPoint.h"
+#include "CSolidShape.h"
 
 class CTriangle final : public CSolidShape
 {
