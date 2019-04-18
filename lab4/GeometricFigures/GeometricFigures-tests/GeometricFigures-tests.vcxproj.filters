@@ -48,6 +48,9 @@
     <ClInclude Include="..\GeometricFigures\CCircle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\GeometricFigures\CShapeAction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -90,6 +93,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CircleTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeActionTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GeometricFigures\CShapeAction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

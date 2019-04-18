@@ -169,6 +169,7 @@
     <ClInclude Include="..\GeometricFigures\CPoint.h" />
     <ClInclude Include="..\GeometricFigures\CRectangle.h" />
     <ClInclude Include="..\GeometricFigures\CShape.h" />
+    <ClInclude Include="..\GeometricFigures\CShapeAction.h" />
     <ClInclude Include="..\GeometricFigures\CSolidShape.h" />
     <ClInclude Include="..\GeometricFigures\CTriangle.h" />
     <ClInclude Include="..\GeometricFigures\IShape.h" />
@@ -181,6 +182,7 @@
     <ClCompile Include="..\GeometricFigures\CLineSegment.cpp" />
     <ClCompile Include="..\GeometricFigures\CRectangle.cpp" />
     <ClCompile Include="..\GeometricFigures\CShape.cpp" />
+    <ClCompile Include="..\GeometricFigures\CShapeAction.cpp" />
     <ClCompile Include="..\GeometricFigures\CSolidShape.cpp" />
     <ClCompile Include="..\GeometricFigures\CTriangle.cpp" />
     <ClCompile Include="AdditionalFunction-tests.cpp" />
@@ -199,6 +201,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="RectangleTests.cpp" />
+    <ClCompile Include="ShapeActionTests.cpp" />
     <ClCompile Include="TriangleTests.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

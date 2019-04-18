@@ -10,10 +10,6 @@ CSolidShape::CSolidShape(string const& type, string& outlineColor, string& fillC
 {
 }
 
-CSolidShape::~CSolidShape()
-{
-}
-
 uint32_t CSolidShape::GetFillColor() const
 {
 	return m_fillColor;

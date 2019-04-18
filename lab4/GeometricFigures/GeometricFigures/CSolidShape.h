@@ -2,16 +2,13 @@
 #include "ISolidShape.h"
 #include "CShape.h"
 
-using namespace std;
-
 class CSolidShape : public ISolidShape, public CShape
 {
 public:
-	CSolidShape(string const& type, string& outlineColor, string & fillColor);
-	virtual ~CSolidShape();
+	CSolidShape(std::string const& type, std::string& outlineColor, std::string & fillColor);
 
 	uint32_t GetFillColor() const override;
-	string ToString() const;
+	std::string ToString() const;
 	uint32_t GetOutlineColor() const;
 
 private:

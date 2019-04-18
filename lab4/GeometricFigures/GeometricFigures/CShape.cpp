@@ -11,10 +11,6 @@ CShape::CShape(string const& type, string& outlineColor)
 {
 }
 
-CShape::~CShape()
-{
-}
-
 uint32_t CShape::GetOutlineColor() const
 {
 	return m_outlineColor;

@@ -1,21 +1,17 @@
 #pragma once
-#include "pch.h"
 #include "IShape.h"
-
-using namespace std;
 
 class CShape : public virtual IShape
 {
 public:
-	CShape(string const& type, string & outlineColor);
-	virtual ~CShape();
+	CShape(std::string const& type, std::string & outlineColor);
 
 	uint32_t GetOutlineColor() const override;
-	string ToString() const;
+	std::string ToString() const;
 
 private:
 	uint32_t m_outlineColor;
-	virtual void AppendProperties1(ostream& strm) const = 0;
-	virtual void AppendProperties2(ostream& strm) const = 0;
-	string m_type;
+	virtual void AppendProperties1(std::ostream& strm) const = 0;
+	virtual void AppendProperties2(std::ostream& strm) const = 0;
+	std::string m_type;
 };

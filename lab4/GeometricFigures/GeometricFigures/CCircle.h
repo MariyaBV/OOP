@@ -6,13 +6,9 @@ class CCircle : public CSolidShape
 {
 public:
 	CCircle(CPoint const& center, double const& radius, std::string& outlineColor, std::string& fillColor);
-	virtual ~CCircle();
 
 	double GetArea() const override;
 	double GetPerimeter() const override;
-
-	uint32_t GetOutlineColor() const;
-	uint32_t GetFillColor() const;
 
 	double GetRadius() const;
 	CPoint GetCenter() const;

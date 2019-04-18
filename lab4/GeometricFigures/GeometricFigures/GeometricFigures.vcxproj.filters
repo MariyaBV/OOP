@@ -51,6 +51,9 @@
     <ClInclude Include="CCircle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CShapeAction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -78,6 +81,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CCircle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CShapeAction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
