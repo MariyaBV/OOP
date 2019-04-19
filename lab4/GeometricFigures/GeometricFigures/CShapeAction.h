@@ -8,10 +8,11 @@ class CShapeAction : boost::noncopyable
 public:
 	CShapeAction(std::istream& input, std::ostream& output);
 	bool HandleCommand();
+	void PrintShapeWithMinPerimeter();
+	void PrintShapeWithMaxArea();
+	void Info();
 
 private:
-	bool Info(std::istream& args);
-
 	void CheckCircleArguments(std::vector<std::string> const& shapeDescription);
 	bool AddCircle(std::istream& args);
 

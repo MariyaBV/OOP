@@ -8,14 +8,16 @@ int main(int __argc, char __argv[])
 {
 	try
 	{
+		CShapeAction shapeInfo(cin, cout);
 		while (!cin.eof() && !cin.fail())
 		{
-			CShapeAction shapeInfo(cin, cout);
 			if (!shapeInfo.HandleCommand())
 			{
-				cout << "Unknown command!\nUsage: Circle, Trinagle, Rectangle, LineSegment or Info" << endl;
+				cout << "Unknown command!\nUsage: Circle, Trinagle, Rectangle or LineSegment with parameters" << endl;
 			}
 		}
+		shapeInfo.PrintShapeWithMaxArea();
+		shapeInfo.PrintShapeWithMinPerimeter();
 	}
 	catch (const exception& e)
 	{

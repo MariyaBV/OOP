@@ -12,7 +12,6 @@ CShapeAction::CShapeAction(istream& input, ostream& output)
 	: m_input(input)
 	, m_output(output)
 	, m_actionMap({ { "Circle", bind(&CShapeAction::AddCircle, this, placeholders::_1) },
-		  { "Info", bind(&CShapeAction::Info, this, placeholders::_1) },
 		  { "Triangle", bind(&CShapeAction::AddTriangle, this, placeholders::_1) },
 		  { "Rectangle", bind(&CShapeAction::AddRectangle, this, placeholders::_1) },
 		  { "LineSegment", bind(&CShapeAction::AddLineSegment, this, placeholders::_1) } })
@@ -37,9 +36,36 @@ bool CShapeAction::HandleCommand()
 	return false;
 }
 
-bool CShapeAction::Info(istream& args)
+void CShapeAction::PrintShapeWithMaxArea()
 {
-	return true;
+	if (!m_shapeList.empty())
+	{
+		auto shapeMaxArea = max_element(m_shapeList.begin(), m_shapeList.end(), [](const auto& arg1, const auto& arg2) {
+			return arg1->GetArea() < arg2->GetArea();
+		});
+
+		m_output << "Maximum area shape: " << (*shapeMaxArea)->ToString() << endl;
+	}
+}
+
+void CShapeAction::PrintShapeWithMinPerimeter()
+{
+	if (!m_shapeList.empty())
+	{
+		auto shapeMinPerimeter = min_element(m_shapeList.cbegin(), m_shapeList.cend(), [](const auto& arg1, const auto& arg2) {
+			return arg1->GetPerimeter() < arg2->GetPerimeter();
+		});
+
+		m_output << "Minimum perimeter shape: " << (*shapeMinPerimeter)->ToString() << endl;
+	}
+}
+
+void CShapeAction::Info()
+{
+	for (const auto& shape : m_shapeList)
+	{
+		cout << shape->ToString() << endl;
+	}
 }
 
 void CShapeAction::CheckCircleArguments(const vector<string>& shapeDescription)
