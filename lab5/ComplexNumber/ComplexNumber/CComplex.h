@@ -8,6 +8,7 @@ public:
 	double Re() const;
 	double Im() const;
 	double GetMagnitude() const;
+	double GetArgument() const;
 
 private:
 	double m_real = 0;
