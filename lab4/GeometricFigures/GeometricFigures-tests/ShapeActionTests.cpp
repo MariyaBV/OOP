@@ -94,55 +94,64 @@ SCENARIO("search max area and min perimeter")
 	{
 		WHEN("user enter circle, rectangle with arguments without color")
 		{
-			const char* fileName1 = "input1.txt";
-			ifstream file1(fileName1);
-			string inputStr;
-			/*while (!file1.eof())
-			{
-				getline(file1, inputStr);
-				input << inputStr;
-				CShapeAction sa(input, output);
-				rc.HandleCommand();
-			}*/
-
-			getline(file1, inputStr);
-			cout << "!!!!!!! " << inputStr;
-			input << inputStr;
+			input << "Rectangle 2.0 0 0 4.0\n";
 			CShapeAction sa(input, output);
 			sa.HandleCommand();
-
-			//getline(file1, inputStr);
-			//cout << "!!!!!!! " << inputStr;
-			//input << inputStr;
-			//CShapeAction sa(input, output);
-			//sa.HandleCommand();
+			input << "Circle 0 0 5.0\n";
+			sa.HandleCommand();
 
 			string result = "Maximum area shape: Circle:\n"
 							"\tarea = 78.54\n"
 							"\tperimeter = 31.42\n"
 							"\toutline color = 000000\n"
-							"\tfill color = 000000\n"
+							"\tfill color = ffffff\n"
 							"\tcenter(0.00, 0.00)\n"
 							"\tradius = 5.00\n\n"
 							"Minimum perimeter shape: Rectangle:\n"
 							"\tarea = 8.00\n"
 							"\tperimeter = 12.00\n"
 							"\toutline color = 000000\n"
-							"\tfill color = 000000\n"
+							"\tfill color = ffffff\n"
 							"\tleft top(2.00, 0.00)\n"
 							"\tright bottom(0.00, 4.00)\n"
 							"\twidth = 4.00\n"
-							"\theight = 2.00\n";
+							"\theight = 2.00\n\n";
 
-			THEN("it is notified that not all arguments")
+			THEN("print shape with max area and min perimeter")
 			{
-				rc.PrintShapeWithMaxArea();
-				rc.PrintShapeWithMinPerimeter();
-				//rc.Info();
+				sa.PrintShapeWithMaxArea();
+				sa.PrintShapeWithMinPerimeter();
 				CHECK(output.str() == result);
 			}
-			AND_THEN("")
+		}
+		AND_WHEN("user enter Triangle, LineSegment with all arguments")
+		{
+			input << "Triangle 0 1.0 2.0 3.0 0 3.0 ff0000 00ff99\n";
+			CShapeAction sa(input, output);
+			sa.HandleCommand();
+			input << "LineSegment 0 1.0 2.0 3.0 ff2200\n";
+			sa.HandleCommand();
+
+			string result = "Maximum area shape: Triangle:\n"
+							"\tarea = 2.00\n"
+							"\tperimeter = 6.83\n"
+							"\toutline color = ff0000\n"
+							"\tfill color = 00ff99\n"
+							"\tvertex1(0.00, 1.00)\n"
+							"\tvertex2(2.00, 3.00)\n"
+							"\tvertex3(0.00, 3.00)\n\n"
+							"Minimum perimeter shape: LineSegment:\n"
+							"\tarea = 0.00\n"
+							"\tperimeter = 2.83\n"
+							"\toutline color = ff2200\n"
+							"\tstart point(0.00, 1.00)\n"
+							"\tend point(2.00, 3.00)\n\n";
+
+			THEN("print shape with max area and min perimeter")
 			{
+				sa.PrintShapeWithMaxArea();
+				sa.PrintShapeWithMinPerimeter();
+				CHECK(output.str() == result);
 			}
 		}
 	}
