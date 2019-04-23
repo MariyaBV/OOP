@@ -68,38 +68,6 @@ void CShapeAction::Info()
 	}
 }
 
-void CShapeAction::CheckCircleArguments(const vector<string>& shapeDescription)
-{
-	if (shapeDescription.size() != 4 && shapeDescription.size() != 6)
-	{
-		throw invalid_argument("Incorrect count of arguments!\nUsage: Circle center.x center.y radius { outline fill }\n");
-	}
-}
-
-void CShapeAction::CheckTriangleArguments(const vector<string>& shapeDescription)
-{
-	if (shapeDescription.size() != 7 && shapeDescription.size() != 9)
-	{
-		throw invalid_argument("Incorrect count of arguments!\nUsage: Triangle vertex1.x vertex1.y vertex2.x vertex2.y vertex3.x vertex.3y {outline fill}\n");
-	}
-}
-
-void CShapeAction::CheckRectangleArguments(const vector<string>& shapeDescription)
-{
-	if (shapeDescription.size() != 5 && shapeDescription.size() != 7)
-	{
-		throw invalid_argument("Incorrect count of arguments!\nUsage: Rectangle leftTop.x leftTop.y rightBottom.x rightBottom.y {outline fill}\n");
-	}
-}
-
-void CShapeAction::CheckLineSegmentArguments(const vector<string>& shapeDescription)
-{
-	if (shapeDescription.size() != 5 && shapeDescription.size() != 6)
-	{
-		throw invalid_argument("Incorrect count of arguments!\nUsage: LineSegment vertex1.x vertex1.y vertex2.x vertex2.y {outline}\n");
-	}
-}
-
 bool CShapeAction::AddCircle(istream& args)
 {
 	vector<string> shapeDescription;
@@ -110,7 +78,10 @@ bool CShapeAction::AddCircle(istream& args)
 		boost::split(shapeDescription, description, boost::is_any_of(" "));
 	}
 
-	CheckCircleArguments(shapeDescription);
+	if (shapeDescription.size() != 4 && shapeDescription.size() != 6)
+	{
+		throw invalid_argument("Incorrect count of arguments!\nUsage: Circle center.x center.y radius { outline fill }\n");
+	}
 
 	CPoint center = { stod(shapeDescription[1]), stod(shapeDescription[2]) };
 	double radius = stod(shapeDescription[3]);
@@ -139,7 +110,10 @@ bool CShapeAction::AddTriangle(istream& args)
 		boost::split(shapeDescription, description, boost::is_any_of(" "));
 	}
 
-	CheckTriangleArguments(shapeDescription);
+	if (shapeDescription.size() != 7 && shapeDescription.size() != 9)
+	{
+		throw invalid_argument("Incorrect count of arguments!\nUsage: Triangle vertex1.x vertex1.y vertex2.x vertex2.y vertex3.x vertex.3y {outline fill}\n");
+	}
 
 	CPoint vertex1 = { stod(shapeDescription[1]), stod(shapeDescription[2]) };
 	CPoint vertex2 = { stod(shapeDescription[3]), stod(shapeDescription[4]) };
@@ -169,7 +143,10 @@ bool CShapeAction::AddRectangle(istream& args)
 		boost::split(shapeDescription, description, boost::is_any_of(" "));
 	}
 
-	CheckRectangleArguments(shapeDescription);
+	if (shapeDescription.size() != 5 && shapeDescription.size() != 7)
+	{
+		throw invalid_argument("Incorrect count of arguments!\nUsage: Rectangle leftTop.x leftTop.y rightBottom.x rightBottom.y {outline fill}\n");
+	}
 
 	CPoint leftTop = { stod(shapeDescription[1]), stod(shapeDescription[2]) };
 	CPoint rightBottom = { stod(shapeDescription[3]), stod(shapeDescription[4]) };
@@ -198,7 +175,10 @@ bool CShapeAction::AddLineSegment(istream& args)
 		boost::split(shapeDescription, description, boost::is_any_of(" "));
 	}
 
-	CheckLineSegmentArguments(shapeDescription);
+	if (shapeDescription.size() != 5 && shapeDescription.size() != 6)
+	{
+		throw invalid_argument("Incorrect count of arguments!\nUsage: LineSegment vertex1.x vertex1.y vertex2.x vertex2.y {outline}\n");
+	}
 
 	CPoint vertex1 = { stod(shapeDescription[1]), stod(shapeDescription[2]) };
 	CPoint vertex2 = { stod(shapeDescription[3]), stod(shapeDescription[4]) };

@@ -14,6 +14,6 @@ public:
 
 private:
 	uint32_t m_fillColor;
-	void AppendProperties(std::ostream& strm) const;
+	void AppendProperties(std::ostream& strm) const final;
 	virtual void AppendSolidShapeChildProperties(std::ostream& strm) const = 0;
 };
