@@ -41,7 +41,7 @@ double CRectangle::GetHeight() const
 	return abs(m_leftTop.x - m_rightBottom.x);
 }
 
-void CRectangle::AppendProperties2(ostream& strm) const
+void CRectangle::AppendSolidShapeChildProperties(ostream& strm) const
 {
 	strm << fixed << setprecision(2)
 		 << "\tleft top(" << m_leftTop.x << ", " << m_leftTop.y << ")" << endl

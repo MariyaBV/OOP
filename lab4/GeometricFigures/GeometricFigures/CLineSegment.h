@@ -17,6 +17,5 @@ public:
 private:
 	CPoint m_startPoint;
 	CPoint m_endPoint;
-	void AppendProperties1(std::ostream& strm) const;
-	void AppendProperties2(std::ostream& strm) const override;
+	void AppendProperties(std::ostream& strm) const override;
 };

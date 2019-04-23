@@ -32,7 +32,7 @@ CPoint CCircle::GetCenter() const
 	return m_center;
 }
 
-void CCircle::AppendProperties2(ostream& strm) const
+void CCircle::AppendSolidShapeChildProperties(ostream& strm) const
 {
 	strm << fixed << setprecision(2)
 		 << "\tcenter(" << m_center.x << ", " << m_center.y << ")" << endl

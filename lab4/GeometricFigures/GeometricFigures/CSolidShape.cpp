@@ -25,7 +25,8 @@ uint32_t CSolidShape::GetOutlineColor() const
 	return CShape::GetOutlineColor();
 }
 
-void CSolidShape::AppendProperties1(ostream& strm) const
+void CSolidShape::AppendProperties(ostream& strm) const
 {
 	strm << "\tfill color = " << setfill('0') << setw(6) << hex << CSolidShape::GetFillColor() << endl;
+	AppendSolidShapeChildProperties(strm);
 }

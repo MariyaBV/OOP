@@ -19,5 +19,5 @@ private:
 	CPoint m_leftTop;
 	CPoint m_rightBottom;
 
-	void AppendProperties2(std::ostream& strm) const;
+	void AppendSolidShapeChildProperties(std::ostream& strm) const;
 };

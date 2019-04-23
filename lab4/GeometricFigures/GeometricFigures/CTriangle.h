@@ -19,5 +19,5 @@ private:
 	CPoint m_vertex2;
 	CPoint m_vertex3;
 
-	void AppendProperties2(std::ostream& strm) const;
+	void AppendSolidShapeChildProperties(std::ostream& strm) const;
 };

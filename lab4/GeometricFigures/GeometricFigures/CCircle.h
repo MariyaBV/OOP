@@ -17,5 +17,5 @@ private:
 	CPoint m_center;
 	double m_radius;
 
-	void AppendProperties2(std::ostream& strm) const;
+	void AppendSolidShapeChildProperties(std::ostream& strm) const;
 };

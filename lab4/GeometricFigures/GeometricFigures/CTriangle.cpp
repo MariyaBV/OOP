@@ -41,7 +41,7 @@ CPoint CTriangle::GetVertex3() const
 	return m_vertex3;
 }
 
-void CTriangle::AppendProperties2(ostream& strm) const
+void CTriangle::AppendSolidShapeChildProperties(ostream& strm) const
 {
 	strm << fixed << setprecision(2)
 		 << "\tvertex1(" << m_vertex1.x << ", " << m_vertex1.y << ")" << endl

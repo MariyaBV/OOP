@@ -11,7 +11,6 @@ public:
 
 private:
 	uint32_t m_outlineColor;
-	virtual void AppendProperties1(std::ostream& strm) const = 0;
-	virtual void AppendProperties2(std::ostream& strm) const = 0;
+	virtual void AppendProperties(std::ostream& strm) const = 0;
 	std::string m_type;
 };
