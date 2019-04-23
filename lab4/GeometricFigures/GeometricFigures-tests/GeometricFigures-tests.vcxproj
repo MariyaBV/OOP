@@ -204,6 +204,9 @@
     <ClCompile Include="ShapeActionTests.cpp" />
     <ClCompile Include="TriangleTests.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\GeometricFigures\input1.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

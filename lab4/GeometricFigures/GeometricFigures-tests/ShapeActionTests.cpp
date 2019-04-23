@@ -88,20 +88,34 @@ SCENARIO("search max area and min perimeter")
 {
 	stringstream input;
 	ostringstream output;
+	CShapeAction sa(input, output);
 
 	GIVEN("all shape with true data")
 	{
 		WHEN("user enter circle, rectangle with arguments without color")
 		{
-			string inputString = "Rectangle 2.0 0 0 4.0\n"
-								 "Circle 0 0 5.0";
-			getline(input, inputString);
-			CShapeAction rc(input, output);
-			rc.HandleCommand();
+			const char* fileName1 = "input1.txt";
+			ifstream file1(fileName1);
+			string inputStr;
+			/*while (!file1.eof())
+			{
+				getline(file1, inputStr);
+				input << inputStr;
+				CShapeAction sa(input, output);
+				rc.HandleCommand();
+			}*/
 
-			//input << "Circle 0 0 5.0";
-			//CShapeAction rc(input, output);
-			//rc.HandleCommand();
+			getline(file1, inputStr);
+			cout << "!!!!!!! " << inputStr;
+			input << inputStr;
+			CShapeAction sa(input, output);
+			sa.HandleCommand();
+
+			//getline(file1, inputStr);
+			//cout << "!!!!!!! " << inputStr;
+			//input << inputStr;
+			//CShapeAction sa(input, output);
+			//sa.HandleCommand();
 
 			string result = "Maximum area shape: Circle:\n"
 							"\tarea = 78.54\n"
