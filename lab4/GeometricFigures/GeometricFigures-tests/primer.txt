@@ -1,0 +1,19 @@
+class ClassA
+{
+public:
+    ~ClassA() {delete this}
+    ClassA() {}
+};
+
+class ClassB : public ClassA
+{
+public:
+    ~ClassB() {delete this}
+    ClassB() : ClassA() {}
+};
+
+int main()
+{
+    ClassA * pA = new ClassB();
+    delete pA; // при удалении удалится Class A, Class B останется не удаленным
+};
