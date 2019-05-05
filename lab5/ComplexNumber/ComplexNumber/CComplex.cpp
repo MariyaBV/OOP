@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "CComplex.h"
+#define _USE_MATH_DEFINES
+#include <math.h>
 
 using namespace std;
 
@@ -32,17 +34,25 @@ double CComplex::GetArgument() const
 {
 	double argument;
 
-	if ((m_real == 0) && (m_image == 0))
+	if (m_real == 0)
 	{
-		throw invalid_argument("Error. Argument zero is undefined.");
+		throw invalid_argument("Error. Usage: argument from real != 0.\n");
 	}
-	else if ((m_image == 0) && (m_real != 0))
+	else if ((m_real > 0) && (m_image >= 0))
 	{
-		argument = 0.0;
+		argument = atan(m_image / m_real);
 	}
-	else if ((m_real == 0) && (m_image != 0))
+	else if ((m_real > 0) && (m_image < 0))
 	{
-		throw invalid_argument("Error. Usage argumet (real != 0).");
+		argument = 2 * M_PI - atan(fabs(m_image / m_real));
+	}
+	else if ((m_real < 0) && (m_image >= 0))
+	{
+		argument = M_PI - atan(fabs(m_image / m_real));
+	}
+	else if ((m_real < 0) && (m_image < 0))
+	{
+		argument = M_PI + atan(fabs(m_image / m_real));
 	}
 	
 	return argument;
