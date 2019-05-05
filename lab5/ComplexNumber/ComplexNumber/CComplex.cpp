@@ -57,3 +57,23 @@ double CComplex::GetArgument() const
 	
 	return argument;
 }
+
+CComplex const operator+(const CComplex& lhs, const CComplex& rhs) 
+{
+	return CComplex(lhs.Re() + rhs.Re(), lhs.Im() + rhs.Im());
+}
+
+CComplex const operator-(const CComplex& lhs, const CComplex& rhs)
+{
+	return CComplex(lhs.Re() - rhs.Re(), lhs.Im() - rhs.Im());
+}
+
+CComplex const CComplex::operator + () const
+{
+	return *this;
+}
+
+CComplex const CComplex::operator-() const
+{
+	return CComplex(-m_real, -m_image);
+}
