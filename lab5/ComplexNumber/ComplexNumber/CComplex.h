@@ -13,7 +13,10 @@ public:
 	CComplex const operator+() const;
 	CComplex const operator-() const;
 
-
+	CComplex& operator+=(CComplex const& rhs);
+	CComplex& operator-=(CComplex const& rhs);
+	CComplex& operator*=(CComplex const& rhs);
+	CComplex& operator/=(CComplex const& rhs);
 
 private:
 	double m_real;
@@ -22,3 +25,7 @@ private:
 
 CComplex const operator+(CComplex const& lhs, CComplex const& rhs);
 CComplex const operator-(CComplex const& lhs, CComplex const& rhs);
+
+CComplex const operator*(CComplex const& lhs, CComplex const& rhs);
+CComplex const operator/(CComplex const& divisible, CComplex const& divider);
+
