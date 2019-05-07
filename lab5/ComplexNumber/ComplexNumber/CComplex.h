@@ -2,7 +2,7 @@
 class CComplex
 {
 public:
-	CComplex(double real, double image);
+	CComplex(double real = 0, double image = 0);
 	~CComplex();
 
 	double Re() const;
@@ -13,10 +13,12 @@ public:
 	CComplex const operator+() const;
 	CComplex const operator-() const;
 
+
+
 private:
-	double m_real = 0;
-	double m_image = 0;
+	double m_real;
+	double m_image;
 };
 
-CComplex const operator+(const CComplex& lhs, const CComplex& rhs);
-CComplex const operator-(const CComplex& lhs, const CComplex& rhs);
+CComplex const operator+(CComplex const& lhs, CComplex const& rhs);
+CComplex const operator-(CComplex const& lhs, CComplex const& rhs);
