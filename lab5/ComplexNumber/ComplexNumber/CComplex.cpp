@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CComplex.h"
 #define _USE_MATH_DEFINES
+#include <float.h>
 #include <math.h>
 
 using namespace std;
@@ -54,7 +55,7 @@ double CComplex::GetArgument() const
 	{
 		argument = M_PI + atan(fabs(m_image / m_real));
 	}
-	
+
 	return argument;
 }
 
@@ -68,7 +69,7 @@ CComplex const operator-(CComplex const& lhs, CComplex const& rhs)
 	return CComplex(lhs.Re() - rhs.Re(), lhs.Im() - rhs.Im());
 }
 
-CComplex const CComplex::operator + () const
+CComplex const CComplex::operator+() const
 {
 	return *this;
 }
@@ -133,4 +134,56 @@ CComplex& CComplex::operator/=(CComplex const& rhs)
 	*this = *this / rhs;
 
 	return *this;
+}
+
+bool const operator==(CComplex const& lhs, CComplex const& rhs)
+{
+	bool reAreEqual = (fabs(lhs.Re() - rhs.Re()) < DBL_EPSILON);
+	bool imAreEqual = (fabs(lhs.Im() - rhs.Im()) < DBL_EPSILON);
+
+	return (reAreEqual && imAreEqual);
+}
+
+bool const operator!=(CComplex const& lhs, CComplex const& rhs)
+{
+	return !(lhs == rhs);
+}
+
+std::ostream& operator<<(std::ostream& stream, CComplex const& complexNumber)
+{
+	if ((complexNumber.Im() < 0) && (complexNumber.Re() != 0))
+	{
+		stream << complexNumber.Re() << complexNumber.Im() << "i";
+	}
+	else if ((complexNumber.Im() > 0) && (complexNumber.Re() != 0))
+	{
+		stream << complexNumber.Re() << "+" << complexNumber.Im() << "i";
+	}
+	else if (complexNumber.Im() == 0)
+	{
+		stream << complexNumber.Re();
+	}
+	else if ((complexNumber.Re() == 0) && (complexNumber.Im() != 0))
+	{
+		stream << complexNumber.Im() << "i";
+	}
+
+	return stream;
+}
+
+std::istream& operator>>(std::istream& stream, CComplex& complexNumber)
+{
+	double re = 0;
+	double im = 0;
+
+	if ((stream >> re) && (stream >> im) && (stream.get() == 'i'))
+	{
+		complexNumber = CComplex(re, im);
+	}
+	else
+	{
+		stream.setstate(std::ios_base::failbit | stream.rdstate());
+	}
+
+	return stream;
 }

@@ -29,3 +29,8 @@ CComplex const operator-(CComplex const& lhs, CComplex const& rhs);
 CComplex const operator*(CComplex const& lhs, CComplex const& rhs);
 CComplex const operator/(CComplex const& divisible, CComplex const& divider);
 
+bool const operator==(CComplex const& lhs, CComplex const& rhs);
+bool const operator!=(CComplex const& lhs, CComplex const& rhs);
+
+std::ostream& operator<<(std::ostream& stream, CComplex const& complexNumber);
+std::istream& operator>>(std::istream& stream, CComplex& complexNumber);
