@@ -35,22 +35,8 @@ double CComplex::GetArgument() const
 	{
 		throw invalid_argument("Error. Usage: argument from real != 0.\n");
 	}
-	else if ((m_real > 0) && (m_image >= 0))
-	{
-		argument = atan(m_image / m_real);
-	}
-	else if ((m_real > 0) && (m_image < 0))
-	{
-		argument = 2 * M_PI - atan(fabs(m_image / m_real));
-	}
-	else if ((m_real < 0) && (m_image >= 0))
-	{
-		argument = M_PI - atan(fabs(m_image / m_real));
-	}
-	else if ((m_real < 0) && (m_image < 0))
-	{
-		argument = M_PI + atan(fabs(m_image / m_real));
-	}
+	
+	argument = atan2(m_image, m_real);
 
 	return argument;
 }
