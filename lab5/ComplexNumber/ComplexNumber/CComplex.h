@@ -3,7 +3,6 @@ class CComplex
 {
 public:
 	CComplex(double real = 0, double image = 0);
-	~CComplex();
 
 	double Re() const;
 	double Im() const;

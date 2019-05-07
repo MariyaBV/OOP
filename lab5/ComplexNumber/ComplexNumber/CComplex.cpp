@@ -12,10 +12,6 @@ CComplex::CComplex(double real, double image)
 {
 }
 
-CComplex::~CComplex()
-{
-}
-
 double CComplex::Re() const
 {
 	return m_real;
