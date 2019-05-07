@@ -16,6 +16,6 @@ enum class Error
 	Ok,
 };
 
-std::string FindAndReplace(std::string subjec, std::string const& searchString, std::string const& replaceString);
+std::string FindAndReplace(std::string const& subjec, std::string const& searchString, std::string const& replaceString);
 Error FindError(std::string const& searchString, std::string& replaceString);
 void PrintError(Error err);
