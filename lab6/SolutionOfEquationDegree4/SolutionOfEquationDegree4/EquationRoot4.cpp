@@ -36,7 +36,7 @@ QuadraticRoots Solve2(double a, double b, double c)
 	return root;
 }
 
-double Solve3(double a, double b, double c, double d)
+double Solve3(double a, double b, double c, double d)//Vieht Trigonometric Formula
 {
 	double maxValidSolution = 0;
 
