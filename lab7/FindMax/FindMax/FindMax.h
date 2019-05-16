@@ -8,7 +8,7 @@ bool FindMax(std::vector<T> const& arr, T& maxValue)
 		return false;
 	}
 
-	int indexOfMaxValue = 0;
+	size_t indexOfMaxValue = 0;
 
 	for (size_t i = 0; i < arr.size(); i++)
 	{
