@@ -9,7 +9,6 @@ struct QuadraticRoots
 
 struct EquationRoot4
 {
-	size_t numRoots = 0;
 	std::vector<double> roots;
 };
 

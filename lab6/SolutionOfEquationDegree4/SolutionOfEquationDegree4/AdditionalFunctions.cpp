@@ -5,9 +5,9 @@ using namespace std;
 
 void PrintRoots(EquationRoot4 const & roots)
 {
-	if (roots.numRoots > 0)
+	if (roots.roots.size() > 0)
 	{
-		cout << "There are " << roots.numRoots << " roots: " << endl;
+		cout << "There are " << roots.roots.size() << " roots: " << endl;
 		for (double number : roots.roots)
 		{
 			if (IsEqual(number, 0))

@@ -24,16 +24,12 @@ EquationRoot4 AddAllRoots(QuadraticRoots const& rootsOfFirstSolve, QuadraticRoot
 	if (rootsOfFirstSolve.rootFound)
 	{
 		roots.roots.push_back(rootsOfFirstSolve.root1);
-		roots.numRoots++;
 		roots.roots.push_back(rootsOfFirstSolve.root2);
-		roots.numRoots++;
 
 		if (rootsOfSecondSolve.rootFound)
 		{
 			roots.roots.push_back(rootsOfSecondSolve.root1);
-			roots.numRoots++;
 			roots.roots.push_back(rootsOfSecondSolve.root2);
-			roots.numRoots++;
 		}
 	}
 	else
@@ -41,9 +37,7 @@ EquationRoot4 AddAllRoots(QuadraticRoots const& rootsOfFirstSolve, QuadraticRoot
 		if (rootsOfSecondSolve.rootFound)
 		{
 			roots.roots.push_back(rootsOfSecondSolve.root1);
-			roots.numRoots++;
 			roots.roots.push_back(rootsOfSecondSolve.root2);
-			roots.numRoots++;
 		}
 	}
 
@@ -191,7 +185,7 @@ EquationRoot4 Solve4(double a, double b, double c, double d, double e) // Ferrar
 		rootsOfSecondSolve = Solve2(1, p2, q2);
 		roots = AddAllRoots(rootsOfFirstSolve, rootsOfSecondSolve);
 
-		if (roots.numRoots == 0)
+		if (roots.roots.size() == 0)
 		{
 			throw domain_error("Error. No valid roots.\n");
 		}
