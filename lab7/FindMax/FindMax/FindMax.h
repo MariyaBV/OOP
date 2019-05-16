@@ -1,24 +1,20 @@
 #include "pch.h"
 
-//template <typename T>
-//T FindMax(T const& a, T const& b)
-//{
-//	return (a > b) ? a : b;
-//}
-
 template <typename T>
 bool FindMax(std::vector<T> const& arr, T& maxValue)
 {
-	if (arr.size() < 1)
+	if (arr.empty())
 	{
 		return false;
 	}
 
-	maxValue = arr[0];
+	int indexOfMaxValue = 0;
 
 	for (size_t i = 0; i < arr.size(); i++)
-		if (arr[i] > maxValue)
-			maxValue = arr[i];
+		if (arr[i + 1] > a[i])
+			indexOfMaxValue = i + 1;
+
+	maxValue = arr[indexOfMaxValue];
 
 	return true;
 }
@@ -26,7 +22,7 @@ bool FindMax(std::vector<T> const& arr, T& maxValue)
 template <>
 bool FindMax<const char*>(std::vector<const char*> const& arr, const char*& maxValue)
 {
-	if (arr.size() < 1)
+	if (arr.empty())
 	{
 		return false;
 	}
