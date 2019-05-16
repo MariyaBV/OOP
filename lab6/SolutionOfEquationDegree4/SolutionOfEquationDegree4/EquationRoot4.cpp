@@ -5,7 +5,7 @@
 
 using namespace std;
 
-bool isEqual(double a, double b)
+bool IsEqual(double a, double b)
 {
 	double eps = 0.0000001;
 
@@ -94,7 +94,7 @@ vector<double> Solve3(double a, double b, double c, double d) //Vieht Trigonomet
 	double s = pow(q, 3) - pow(r, 2);
 	vector<double> roots;
 
-	if (isEqual(s, 0))
+	if (IsEqual(s, 0))
 	{
 		double x1 = -2 * sgn(r) * sqrt(q) - a1 / 3;
 		roots.push_back(x1);
@@ -106,7 +106,11 @@ vector<double> Solve3(double a, double b, double c, double d) //Vieht Trigonomet
 	{
 		double x;
 
-		if (q < 0)
+		if (IsEqual(q, 0))
+		{
+			x = -pow((c1 - pow(a1, 3) / 27), 1 / 3) - a1 / 3;
+		}
+		else if (q < 0)
 		{
 			double phi = asinh(abs(r) / sqrt(pow(abs(q), 3))) / 3;
 			x = -2 * sgn(r) * sqrt(abs(q)) * sinh(phi) - (a1 / 3);
@@ -116,10 +120,7 @@ vector<double> Solve3(double a, double b, double c, double d) //Vieht Trigonomet
 			double phi = acosh(abs(r) / sqrt(pow(abs(q), 3))) / 3;
 			x = -2 * sgn(r) * sqrt(abs(q)) * cosh(phi) - (a1 / 3);
 		}
-		else
-		{
-			x = -pow((c1 - pow(a1, 3) / 27), 1 / 3) - a1 / 3;
-		}
+
 		roots.push_back(x);
 	}
 	else if (s > 0)
@@ -182,7 +183,7 @@ EquationRoot4 Solve4(double a, double b, double c, double d, double e) // Ferrar
 		QuadraticRoots rootsOfFirstSolve;
 		QuadraticRoots rootsOfSecondSolve;
 
-		if (!isEqual((p1 * q2 + p2 * q1), a3))
+		if (!IsEqual((p1 * q2 + p2 * q1), a3))
 		{
 			swap(q1, q2);
 		}

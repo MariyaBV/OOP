@@ -14,7 +14,7 @@ struct EquationRoot4
 };
 
 int sgn(double val);
-bool isEqual(double a, double b);
+bool IsEqual(double a, double b);
 QuadraticRoots Solve2(double a, double b, double c);
 std::vector<double> Solve3(double a, double b, double c, double d);
 EquationRoot4 Solve4(double a, double b, double c, double d, double e);

@@ -10,7 +10,7 @@ void PrintRoots(EquationRoot4 const & roots)
 		cout << "There are " << roots.numRoots << " roots: " << endl;
 		for (double number : roots.roots)
 		{
-			if (isEqual(number, 0))
+			if (IsEqual(number, 0))
 			{
 				cout << fixed << setprecision(4) << abs(number) << ' ';
 			}
