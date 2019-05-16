@@ -11,8 +11,10 @@ bool FindMax(std::vector<T> const& arr, T& maxValue)
 	int indexOfMaxValue = 0;
 
 	for (size_t i = 0; i < arr.size(); i++)
-		if (arr[i + 1] > a[i])
-			indexOfMaxValue = i + 1;
+	{
+		if(arr[indexOfMaxValue] < arr[i])
+			indexOfMaxValue = i;
+	}
 
 	maxValue = arr[indexOfMaxValue];
 
