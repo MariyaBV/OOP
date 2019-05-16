@@ -5,9 +5,50 @@
 
 using namespace std;
 
+bool isEqual(double a, double b)
+{
+	double eps = 0.0000001;
+
+	return abs(a - b) < eps;
+}
+
 int sgn(double val)
 {
 	return (val > 0) ? (1) : ((val < 0) ? (-1) : (0));
+}
+
+EquationRoot4 AddAllRoots(QuadraticRoots const& rootsOfFirstSolve, QuadraticRoots const& rootsOfSecondSolve)
+{
+	EquationRoot4 roots;
+
+	if (rootsOfFirstSolve.rootFound)
+	{
+		roots.roots.push_back(rootsOfFirstSolve.root1);
+		roots.numRoots++;
+		roots.roots.push_back(rootsOfFirstSolve.root2);
+		roots.numRoots++;
+
+		if (rootsOfSecondSolve.rootFound)
+		{
+			roots.roots.push_back(rootsOfSecondSolve.root1);
+			roots.numRoots++;
+			roots.roots.push_back(rootsOfSecondSolve.root2);
+			roots.numRoots++;
+		}
+	}
+	else
+	{
+		if (rootsOfSecondSolve.rootFound)
+		{
+			roots.roots.push_back(rootsOfSecondSolve.root1);
+			roots.numRoots++;
+			roots.roots.push_back(rootsOfSecondSolve.root2);
+			roots.numRoots++;
+		}
+	}
+
+	sort(roots.roots.begin(), roots.roots.end());
+	return roots;
 }
 
 QuadraticRoots Solve2(double a, double b, double c)
@@ -43,9 +84,8 @@ QuadraticRoots Solve2(double a, double b, double c)
 	return root;
 }
 
-double Solve3(double a, double b, double c, double d) //Vieht Trigonometric Formula
+vector<double> Solve3(double a, double b, double c, double d) //Vieht Trigonometric Formula
 {
-	double maxValidSolution;
 	double a1 = b / a;
 	double b1 = c / a;
 	double c1 = d / a;
@@ -54,7 +94,15 @@ double Solve3(double a, double b, double c, double d) //Vieht Trigonometric Form
 	double s = pow(q, 3) - pow(r, 2);
 	vector<double> roots;
 
-	if (s < 0)
+	if (isEqual(s, 0))
+	{
+		double x1 = -2 * sgn(r) * sqrt(q) - a1 / 3;
+		roots.push_back(x1);
+
+		double x2 = sgn(r) * sqrt(q) - a1 / 3;
+		roots.push_back(x2);
+	}
+	else if (s < 0)
 	{
 		double x;
 
@@ -86,23 +134,71 @@ double Solve3(double a, double b, double c, double d) //Vieht Trigonometric Form
 		double x3 = -2 * sqrt(q) * cos(phi - 2 * M_PI / 3) - a1 / 3;
 		roots.push_back(x3);
 	}
-	else
-	{
-		double x1 = -2 * pow(r, 1 / 3) - a1 / 3;
-		roots.push_back(x1);
 
-		double x2 = pow(r, 1 / 3) - a1 / 3;
-		roots.push_back(x2);
-	}
-
-	maxValidSolution = *max_element(roots.begin(), roots.end());
-
-	return maxValidSolution;
+	sort(roots.begin(), roots.end());
+	return roots;
 }
 
-EquationRoot4 Solve4(double a, double b, double c, double d, double e)
+EquationRoot4 Solve4(double a, double b, double c, double d, double e) // Ferrari method
 {
-	EquationRoot4 root;
+	EquationRoot4 roots;
 
-	return root;
+	if (a == 0)
+	{
+		throw invalid_argument("Error. The zero value of the coefficient A is not allowed\n");
+	}
+
+	double a3 = b / a;
+	double a2 = c / a;
+	double a1 = d / a;
+	double a0 = e / a;
+
+	vector<double> u = Solve3(1, -a2, (a1 * a3 - 4 * a0), -(pow(a1, 2) + a0 * pow(a3, 2) - 4 * a0 * a2));
+
+	double p0 = pow(a3, 2) / 4 + u[0] - a2;
+	double q0 = pow(u[0], 2) / 4 - a0;
+	double necessaryU = u[0];
+
+	if ((p0 < 0 || q0 < 0) && (u.size() > 1))
+	{
+		p0 = pow(a3, 2) / 4 + u[1] - a2;
+		q0 = pow(u[1], 2) / 4 - a0;
+		necessaryU = u[1];
+
+		if ((p0 < 0 || q0 < 0) && (u.size() > 2))
+		{
+			p0 = pow(a3, 2) / 4 + u[2] - a2;
+			q0 = pow(u[2], 2) / 4 - a0;
+			necessaryU = u[2];
+		}
+	}
+
+	if (p0 >= 0 && q0 >= 0)
+	{
+		double p1 = a3 / 2 + sqrt(p0);
+		double p2 = a3 / 2 - sqrt(p0);
+		double q1 = necessaryU / 2 + sqrt(q0);
+		double q2 = necessaryU / 2 - sqrt(q0);
+		QuadraticRoots rootsOfFirstSolve;
+		QuadraticRoots rootsOfSecondSolve;
+
+		if (!isEqual((p1 * q2 + p2 * q1), a3))
+		{
+			swap(q1, q2);
+		}
+		rootsOfFirstSolve = Solve2(1, p1, q1);
+		rootsOfSecondSolve = Solve2(1, p2, q2);
+		roots = AddAllRoots(rootsOfFirstSolve, rootsOfSecondSolve);
+
+		if (roots.numRoots == 0)
+		{
+			throw domain_error("Error. No valid roots.\n");
+		}
+	}
+	else
+	{
+		throw domain_error("Error. No valid roots.\n");
+	}
+
+	return roots;
 };

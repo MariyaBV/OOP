@@ -10,10 +10,12 @@ struct QuadraticRoots
 struct EquationRoot4
 {
 	size_t numRoots = 0;
-	double roots[4];
+	std::vector<double> roots;
 };
 
 int sgn(double val);
+bool isEqual(double a, double b);
 QuadraticRoots Solve2(double a, double b, double c);
-double Solve3(double a, double b, double c, double d);
+std::vector<double> Solve3(double a, double b, double c, double d);
 EquationRoot4 Solve4(double a, double b, double c, double d, double e);
+EquationRoot4 AddAllRoots(QuadraticRoots const& rootsOfFirstSolve, QuadraticRoots const& rootsOfSecondSolve);
