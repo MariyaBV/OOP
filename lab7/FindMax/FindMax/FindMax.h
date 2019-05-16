@@ -1,4 +1,4 @@
-#include "pch.h"
+#pragma once
 
 template <typename T>
 bool FindMax(std::vector<T> const& arr, T& maxValue)
