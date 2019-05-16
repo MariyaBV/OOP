@@ -100,9 +100,9 @@ double Solve3(double a, double b, double c, double d) //Vieht Trigonometric Form
 	return maxValidSolution;
 }
 
-//EquationRoot4 Solve4(double a, double b, double c, double d, double e)
-//{
-//	EquationRoot4 root;
-//
-//	return root;
-//};
+EquationRoot4 Solve4(double a, double b, double c, double d, double e)
+{
+	EquationRoot4 root;
+
+	return root;
+};

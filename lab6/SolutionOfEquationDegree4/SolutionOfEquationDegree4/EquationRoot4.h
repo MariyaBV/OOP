@@ -9,11 +9,11 @@ struct QuadraticRoots
 
 struct EquationRoot4
 {
-	double numRoots;
+	size_t numRoots = 0;
 	double roots[4];
 };
 
-int sgn(int val);
+int sgn(double val);
 QuadraticRoots Solve2(double a, double b, double c);
 double Solve3(double a, double b, double c, double d);
-//EquationRoot4 Solve4(double a, double b, double c, double d, double e);
+EquationRoot4 Solve4(double a, double b, double c, double d, double e);
