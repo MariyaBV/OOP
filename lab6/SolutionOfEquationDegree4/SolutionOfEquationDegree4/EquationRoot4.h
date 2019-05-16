@@ -13,6 +13,7 @@ struct EquationRoot4
 	double roots[4];
 };
 
+int sgn(int val);
 QuadraticRoots Solve2(double a, double b, double c);
 double Solve3(double a, double b, double c, double d);
 //EquationRoot4 Solve4(double a, double b, double c, double d, double e);
