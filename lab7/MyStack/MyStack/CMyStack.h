@@ -45,8 +45,8 @@ public:
 		}
 	}
 
-	CMyStack(CMyStack&& stack)
-		: m_top(stack.m_top) noexcept
+	CMyStack(CMyStack&& stack) noexcept
+		: m_top(stack.m_top) 
 	{
 		stack.m_top = nullptr;
 	}
