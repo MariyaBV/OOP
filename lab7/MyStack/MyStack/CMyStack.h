@@ -5,6 +5,11 @@ class CMyStack
 {
 	struct Component
 	{
+		Component(const T& data, Component* next)
+			: data(std::move(data))
+			, next(next)
+		{
+		}
 		T data;
 		Component* next;
 	};
@@ -20,19 +25,14 @@ public:
 			{
 				Component* current = other.m_top;
 				//copy the top of the stack
-				m_top = new Component;
-				m_top->data = current->data;
-				m_top->next = nullptr;
+				m_top = new Component(current->data, nullptr);
 
 				Component* last = m_top; //set last to point to the node
 				current = current->next; //set current to point to the next node
 				//copy the remaining stack
 				while (current)
 				{
-					Component* newComponent = new Component;
-
-					newComponent->data = current->data;
-					newComponent->next = nullptr;
+					Component* newComponent = new Component(current->data, nullptr);
 					last->next = newComponent;
 					last = newComponent;
 					current = current->next;
@@ -66,9 +66,7 @@ public:
 	{
 		try
 		{
-			Component* newComponent = new Component; //создаем и выделяем память для нового элемента
-			newComponent->data = newData; //записываем необходимую инфрмацию в data
-			newComponent->next = m_top; //проводим связь от нового элемента, к вершине
+			Component* newComponent = new Component(newData, m_top); //создаем и выделяем память для нового элемента
 			m_top = newComponent; //обозначаем, что вершиной теперь является новый элемент
 		}
 		catch (...)
@@ -77,7 +75,7 @@ public:
 		}
 	}
 
-	T GetTop() const
+	const T& GetTop() const
 	{
 		if (!IsEmpty())
 		{
@@ -89,16 +87,13 @@ public:
 		}
 	}
 
-	T Pop()
+	void Pop()
 	{
 		if (!IsEmpty())
 		{
-			T tempData = m_top->data;
 			Component* tempTop = m_top;
 			m_top = m_top->next;
-			free(tempTop);
-
-			return tempData;
+			delete tempTop;
 		}
 		else
 		{
@@ -108,14 +103,11 @@ public:
 
 	void Clear()
 	{
-		if (!IsEmpty())
+		while (m_top != NULL)
 		{
-			while (m_top != NULL)
-			{
-				Component* tempTop = m_top;
-				m_top = m_top->next;
-				free(tempTop);
-			}
+			Component* tempTop = m_top;
+			m_top = m_top->next;
+			delete tempTop;
 		}
 	}
 
