@@ -119,7 +119,7 @@ public:
 		}
 	}
 
-	CMyStack<T> operator=(CMyStack const& other)
+	CMyStack& operator=(CMyStack const& other)
 	{
 		if (std::addressof(&other) !=  std::addressof(this))
 		{
@@ -130,7 +130,7 @@ public:
 		return *this;
 	}
 
-	CMyStack<T> operator=(CMyStack&& other)
+	CMyStack& operator=(CMyStack&& other)
 	{
 		if (std::addressof(&other) !=  std::addressof(this))
 		{
