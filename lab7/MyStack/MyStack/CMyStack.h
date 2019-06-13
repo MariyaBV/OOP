@@ -6,7 +6,7 @@ class CMyStack
 	struct Component
 	{
 		Component(const T& data, Component* next)
-			: data(std::move(data))
+			: data(data)
 			, next(next)
 		{
 		}
@@ -56,7 +56,7 @@ public:
 		Clear();
 	};
 
-	bool IsEmpty() const
+	bool IsEmpty() const noexcept
 	{
 		return (m_top == NULL) ? true : false;
 	}
@@ -93,7 +93,7 @@ public:
 		}
 	}
 
-	void Clear()
+	void Clear() noexcept
 	{
 		while (m_top != NULL)
 		{
@@ -103,9 +103,9 @@ public:
 		}
 	}
 
-	CMyStack& operator=(CMyStack const& other)
+	CMyStack& operator=(CMyStack const& other) noexcept
 	{
-		if (std::addressof(&other) !=  std::addressof(this))
+		if (std::addressof(&other) != std::addressof(this))
 		{
 			CMyStack newStack(other);
 
@@ -114,9 +114,9 @@ public:
 		return *this;
 	}
 
-	CMyStack& operator=(CMyStack&& other)
+	CMyStack& operator=(CMyStack&& other) noexcept
 	{
-		if (std::addressof(&other) !=  std::addressof(this))
+		if (std::addressof(&other) != std::addressof(this))
 		{
 			Clear();
 			m_top = other.m_top;
