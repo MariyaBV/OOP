@@ -11,10 +11,12 @@ class CMyStack
 
 public:
 	CMyStack() = default;
-	/*~CMyStack()
+
+	~CMyStack()
 	{
 		Clear();
-	};*/
+	};
+
 	bool IsEmpty() const
 	{
 		return (m_top == NULL) ? true : false;
@@ -33,7 +35,6 @@ public:
 		{
 			throw;
 		}
-		
 	}
 
 	T GetTop() const
@@ -62,6 +63,19 @@ public:
 		else
 		{
 			throw std::out_of_range("Error. Empty stack.\n");
+		}
+	}
+
+	void Clear()
+	{
+		if (!IsEmpty())
+		{
+			while (m_top != NULL)
+			{
+				Component* tempTop = m_top;
+				m_top = m_top->next;
+				free(tempTop);
+			}
 		}
 	}
 
