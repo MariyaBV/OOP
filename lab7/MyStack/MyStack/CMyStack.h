@@ -26,7 +26,6 @@ public:
 				Component* current = other.m_top;
 				//copy the top of the stack
 				m_top = new Component(current->data, nullptr);
-
 				Component* last = m_top; //set last to point to the node
 				current = current->next; //set current to point to the next node
 				//copy the remaining stack
@@ -64,15 +63,8 @@ public:
 
 	void Push(T const& newData)
 	{
-		try
-		{
-			Component* newComponent = new Component(newData, m_top); //создаем и выделяем память для нового элемента
-			m_top = newComponent; //обозначаем, что вершиной теперь является новый элемент
-		}
-		catch (...)
-		{
-			throw;
-		}
+		Component* newComponent = new Component(newData, m_top); //создаем и выделяем память для нового элемента
+		m_top = newComponent; //обозначаем, что вершиной теперь является новый элемент
 	}
 
 	const T& GetTop() const
