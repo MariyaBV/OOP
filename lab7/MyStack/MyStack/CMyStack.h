@@ -46,7 +46,7 @@ public:
 	}
 
 	CMyStack(CMyStack&& stack)
-		: m_top(stack.m_top)
+		: m_top(stack.m_top) noexcept
 	{
 		stack.m_top = nullptr;
 	}
@@ -103,7 +103,7 @@ public:
 		}
 	}
 
-	CMyStack& operator=(CMyStack const& other) noexcept
+	CMyStack& operator=(CMyStack const& other)
 	{
 		if (std::addressof(&other) != std::addressof(this))
 		{
