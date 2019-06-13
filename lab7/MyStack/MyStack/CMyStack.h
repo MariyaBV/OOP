@@ -29,12 +29,12 @@ public:
 				//copy the remaining stack
 				while (current)
 				{
-					Component* newNode = new Component;
+					Component* newComponent = new Component;
 
-					newNode->data = current->data;
-					newNode->next = nullptr;
-					last->next = newNode;
-					last = newNode;
+					newComponent->data = current->data;
+					newComponent->next = nullptr;
+					last->next = newComponent;
+					last = newComponent;
 					current = current->next;
 				}
 			}
