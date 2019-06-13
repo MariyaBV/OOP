@@ -12,6 +12,46 @@ class CMyStack
 public:
 	CMyStack() = default;
 
+	CMyStack(CMyStack const& other)
+	{
+		if (!other.IsEmpty())
+		{
+			try
+			{
+				Component* current = other.m_top;
+				//copy the top of the stack
+				m_top = new Component;
+				m_top->data = current->data;
+				m_top->next = nullptr;
+
+				Component* last = m_top; //set last to point to the node
+				current = current->next; //set current to point to the next node
+				//copy the remaining stack
+				while (current)
+				{
+					Component* newNode = new Component;
+
+					newNode->data = current->data;
+					newNode->next = nullptr;
+					last->next = newNode;
+					last = newNode;
+					current = current->next;
+				}
+			}
+			catch (...)
+			{
+				Clear();
+				throw;
+			}
+		}
+	}
+
+	CMyStack(CMyStack&& stack)
+		: m_top(stack.m_top)
+	{
+		stack.m_top = nullptr;
+	}
+
 	~CMyStack()
 	{
 		Clear();
@@ -77,6 +117,28 @@ public:
 				free(tempTop);
 			}
 		}
+	}
+
+	CMyStack<T> operator=(CMyStack const& other)
+	{
+		if (std::addressof(&other) !=  std::addressof(this))
+		{
+			CMyStack newStack(other);
+
+			std::swap(m_top, newStack.m_top);
+		}
+		return *this;
+	}
+
+	CMyStack<T> operator=(CMyStack&& other)
+	{
+		if (std::addressof(&other) !=  std::addressof(this))
+		{
+			Clear();
+			m_top = other.m_top;
+			other.m_top = nullptr;
+		}
+		return *this;
 	}
 
 private:
