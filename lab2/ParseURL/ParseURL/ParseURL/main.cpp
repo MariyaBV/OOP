@@ -13,16 +13,23 @@ int main()
 
 	while(getline(cin, url))
 	{
-		if (ParseURL(url, protocol, port, host, document))
+		try
 		{
-			cout << url << endl;
-			cout << "HOST: " << host << endl;
-			cout << "PORT: " << port << endl;
-			cout << "DOC: " << document << endl;
+			if(ParseURL(url, protocol, port, host, document))
+			{
+				cout << url << endl;
+				cout << "HOST: " << host << endl;
+				cout << "PORT: " << port << endl;
+				cout << "DOC: " << document << endl;
+			}
+			else
+			{
+				throw invalid_argument("Error. Not correct URL.\n");
+			}
 		}
-		else
+		catch (const exception& e)
 		{
-			cout << "Error. Not correct URL." << endl;
+			cout << e.what() << endl;
 		}
 	}
 
